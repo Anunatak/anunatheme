@@ -1,0 +1,20 @@
+{
+  "name": "anunatheme",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Anunatak/anunatheme",
+  "authors": [
+    "Tor Morten Jensen <tormorten@anunatak.no>"
+  ],
+  "description": "A starter theme",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.0.4"
+  }
+}
