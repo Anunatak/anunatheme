@@ -1,0 +1,6 @@
+/*==========  Fixes overlapping admin bar  ==========*/
+@media screen and (max-width: 600px) {
+    #wpadminbar {
+		position: fixed !important;
+	}
+}

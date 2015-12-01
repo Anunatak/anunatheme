@@ -12,6 +12,16 @@
       ],
       "main": true
     },
+    "fonts.css": {
+      "files": [
+        "styles/fonts.scss"
+      ]
+    },
+    "editor-style.css": {
+      "files": [
+        "styles/editor-style.scss"
+      ]
+    },
     "customizer.js": {
       "files": [
         "scripts/customizer.js"
@@ -22,6 +32,6 @@
     }
   },
   "config": {
-    "devUrl": "http://example.dev"
+    "devUrl": "http://plugin.dev"
   }
 }

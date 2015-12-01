@@ -1,0 +1,13 @@
+{
+    "name": "anunatak/anunatheme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tor Morten Jensen",
+            "email": "tormorten@anunatak.no"
+        }
+    ],
+    "require": {
+        "tormjens/wp-blade": "^1.0"
+    }
+}

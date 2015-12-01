@@ -1,35 +1,46 @@
 {
-  "name": "sage",
-  "homepage": "https://roots.io/sage/",
+  "name": "anunatheme",
+  "homepage": "https://github.com/Anunatak/anunatheme",
   "authors": [
-    "Ben Word <ben@benword.com>"
+    "Tor Morten Jensen <tormorten@anunatak.no>"
   ],
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap-sass": "3.3.6"
+    "foundation-sites": "~6.0.4",
+    "jquery-dom-router": "master"
   },
   "overrides": {
-    "bootstrap-sass": {
+    "foundation-sites": {
       "main": [
-        "./assets/stylesheets/_bootstrap.scss",
-        "./assets/javascripts/bootstrap/transition.js",
-        "./assets/javascripts/bootstrap/alert.js",
-        "./assets/javascripts/bootstrap/button.js",
-        "./assets/javascripts/bootstrap/carousel.js",
-        "./assets/javascripts/bootstrap/collapse.js",
-        "./assets/javascripts/bootstrap/dropdown.js",
-        "./assets/javascripts/bootstrap/modal.js",
-        "./assets/javascripts/bootstrap/tooltip.js",
-        "./assets/javascripts/bootstrap/popover.js",
-        "./assets/javascripts/bootstrap/scrollspy.js",
-        "./assets/javascripts/bootstrap/tab.js",
-        "./assets/javascripts/bootstrap/affix.js",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+        "./scss/foundation.scss",
+        "./js/foundation.core.js",
+        "./js/foundation.abide.js",
+        "./js/foundation.accordion.js",
+        "./js/foundation.accordionMenu.js",
+        "./js/foundation.drilldown.js",
+        "./js/foundation.dropdownMenu.js",
+        "./js/foundation.equalizer.js",
+        "./js/foundation.interchange.js",
+        "./js/foundation.magellan.js",
+        "./js/foundation.offcanvas.js",
+        "./js/foundation.orbit.js",
+        "./js/foundation.responsiveMenu.js",
+        "./js/foundation.responsiveToggle.js",
+        "./js/foundation.reveal.js",
+        "./js/foundation.slider.js",
+        "./js/foundation.sticky.js",
+        "./js/foundation.tabs.js",
+        "./js/foundation.toggler.js",
+        "./js/foundation.tooltip.js",
+        "./js/foundation.util.box.js",
+        "./js/foundation.util.keyboard.js",
+        "./js/foundation.util.mediaQuery.js",
+        "./js/foundation.util.motion.js",
+        "./js/foundation.util.nest.js",
+        "./js/foundation.util.timerAndImageLoader.js",
+        "./js/foundation.util.touch.js",
+        "./js/foundation.util.triggers.js"
       ]
     }
   }

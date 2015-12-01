@@ -1,6 +1,8 @@
 {{--
+Template Name: Custom Page Template
+
 @type 	Template
-@for 	Pages
+@for 	Page Template
 --}}
 @extends('layouts.app')
 

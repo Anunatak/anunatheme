@@ -1,7 +1,3 @@
-{{--
-@type 	Template
-@for 	Search Results
---}}
 @extends('layouts.app')
 
 @section('content')
