@@ -1,3 +1,4 @@
+@import "common/_mixins";
 @import "common/_variables";
 
 // Foundation variables goes here, before including foundation framework
@@ -7,6 +8,7 @@
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
+@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
 // endbower
 
 @include foundation-everything;
@@ -23,8 +25,9 @@
 @import "layouts/_footer";
 @import "layouts/_pages";
 @import "layouts/_posts";
+@import "layouts/_navigation";
 
 
 // Fixes
 @import "common/_fixes";
-            
+

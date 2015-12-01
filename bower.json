@@ -8,7 +8,8 @@
   "private": true,
   "dependencies": {
     "foundation-sites": "~6.0.4",
-    "jquery-dom-router": "master"
+    "jquery-dom-router": "master",
+    "bourbon": "~4.2.6"
   },
   "overrides": {
     "foundation-sites": {
