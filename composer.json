@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "tormjens/wp-blade": "^1.0"
+        "tormjens/wp-blade": "dev-master"
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3cb017cf4160f96f486f0937473f5997",
+    "hash": "270746fb0cf2ed880b636e21668500eb",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -412,16 +412,16 @@
         },
         {
             "name": "philo/laravel-blade",
-            "version": "v3.0",
+            "version": "v3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhiloNL/Laravel-Blade.git",
-                "reference": "728be672354bdd377da56394e699112ddfa0628b"
+                "reference": "3f0ce2ee198604c53c25188110e6d7b5e887527a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhiloNL/Laravel-Blade/zipball/728be672354bdd377da56394e699112ddfa0628b",
-                "reference": "728be672354bdd377da56394e699112ddfa0628b",
+                "url": "https://api.github.com/repos/PhiloNL/Laravel-Blade/zipball/3f0ce2ee198604c53c25188110e6d7b5e887527a",
+                "reference": "3f0ce2ee198604c53c25188110e6d7b5e887527a",
                 "shasum": ""
             },
             "require": {
@@ -449,7 +449,7 @@
                 "blade",
                 "laravel"
             ],
-            "time": "2015-04-18 21:03:31"
+            "time": "2015-12-04 09:42:42"
         },
         {
             "name": "symfony/finder",
@@ -502,16 +502,16 @@
         },
         {
             "name": "tormjens/wp-blade",
-            "version": "1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tormjens/wp-blade.git",
-                "reference": "9942077c818f7c86ee6c6442d00de8881cea7713"
+                "reference": "0da3b93048cf2c7105af7f78194315770bddfe9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/9942077c818f7c86ee6c6442d00de8881cea7713",
-                "reference": "9942077c818f7c86ee6c6442d00de8881cea7713",
+                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/0da3b93048cf2c7105af7f78194315770bddfe9e",
+                "reference": "0da3b93048cf2c7105af7f78194315770bddfe9e",
                 "shasum": ""
             },
             "require": {
@@ -534,13 +534,15 @@
                 }
             ],
             "description": "Use Blade templates in your WordPress theme",
-            "time": "2015-08-17 12:32:41"
+            "time": "2015-12-07 10:23:42"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "tormjens/wp-blade": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

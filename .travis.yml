@@ -15,6 +15,7 @@ cache:
   directories:
     - bower_components
     - node_modules
+    - vendor
 
 install:
   - npm install -g npm@latest
@@ -23,6 +24,7 @@ install:
   - composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer global require squizlabs/php_codesniffer
+  - composer install
 
 script:
   - npm run build
