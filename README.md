@@ -2,6 +2,8 @@
 
 AnunaTheme is a WordPress starter-theme based on Sage, flavoured with Laravel Blade.
 
+If you are looking for a complete production-ready theme, move along. AnunaTheme is a skeleton and contains a bare minimum of styles, and acts as a starting point for developers.
+
 ## Features
 
 * [Sage](https://github.com/roots/sage)
