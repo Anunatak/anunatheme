@@ -25,6 +25,9 @@ If you are looking for a complete production-ready theme, move along. AnunaTheme
 | Bower >= 1.3.12 | `bower -v`           | `npm install -g bower` |
 | Composer        | `composer --version` | [getcomposer.org](http://getcomposer.org) |
 
+## 404 Page
+
+We've incorporated a fun 404 page in the theme. When your visitors lands somewhere that doesn't exist they can play the ever popular [Snake game](https://github.com/ncpierson/Snake). The code behind it courtesy of [Nick Pierson](http://nickpierson.me), which developed the game while becoming more familiar with JavaScript. We've made some minor adjustments which allows us to modify colors and listen for events. See [the Github page for the plugin](https://github.com/tormjens/jquery-snake).
 
 ## DOM Based Router
 

@@ -9,7 +9,9 @@
 {{ __('We know you might be sad right now. Perhaps playing Snake will make you feel better?', 'anunatheme') }}
 
 <div class="snake-container">
-	<div class="snake-color snake"></div>
+	<div class="snake-color snake-tail"></div>
+	<div class="snake-color snake-head"></div>
+	<div class="snake-color score"></div>
 	<div class="snake-color apple"></div>
 	<div class="snake-intro">
 		<button class="snake-play">

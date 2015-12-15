@@ -1,11 +1,17 @@
 .snake-container {
 	.snake-color {
 		display: none;
-		&.snake {
+		&.snake-head {
 			color: darken(#fff, 50%);
+		}
+		&.snake-tail {
+			color: darken(#fff, 30%);
 		}
 		&.apple {
 			color: #ff0000;
+		}
+		&.score {
+			color: darken(#fff, 20%);
 		}
 	}
 	position: relative;

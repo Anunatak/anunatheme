@@ -10,12 +10,13 @@
     "foundation-sites": "~6.0.4",
     "jquery-dom-router": "master",
     "bourbon": "4.2.6",
-    "components-modernizr": "2.8.3"
+    "components-modernizr": "2.8.3",
+    "jquery-snake": "*"
   },
   "overrides": {
-  	"bourbon": {
-  		"main": []
-  	},
+    "bourbon": {
+      "main": []
+    },
     "foundation-sites": {
       "main": [
         "./scss/foundation.scss",

@@ -10,52 +10,51 @@
 			// Cool
 		},
 		error404: function() {
-			var $container = $('.snake-container');
-			var $canvas = $container.find('.snake-canvas');
-			var canvas = $canvas.get(0);
+			var $container = $('.snake-container'); // the container for the snake game
+			var $canvas = $container.find('.snake-canvas'); // the canvas jquery object
+			var canvas = $canvas.get(0); // the canvas javascript element
 
-			function resizeCanvas() {
-				var width = $canvas.parent().width();
-				var height = width*9/16;
-				// set these to whatever dimensions you want
-				canvas.style.width = width + 'px'; // width same as parent
-				canvas.style.height = height + 'px'; // height same as parent
-
-				// these must be set for proper drawing
-				canvas.width = width;
-				canvas.height = height;
-
-				game.resize(); // let SnakeGame know that the canvas has resized, also necessary
-			}
+			// get the color of the apple from the css
 			var apple = $container.find('.snake-color.apple').css('color');
-			var snake = $container.find('.snake-color.snake').css('color');
-			var game = new SnakeGame(canvas, {
-				snakeColor: snake,
-				appleColor: apple
+
+			// get the color of the snake head
+			var snakeHead = $container.find('.snake-color.snake-head').css('color');
+
+			// get the color of the snake tail
+			var snakeTail = $container.find('.snake-color.snake-tail').css('color');
+
+			// get the color of the score
+			var score = $container.find('.snake-color.score').css('color');
+
+			var game = $canvas.snake({
+				snakeHeadColor: snakeHead,
+				snakeTailColor: snakeTail,
+				appleColor: apple,
+				scoreColor: score
 			});
+
 			if (Modernizr.touch) {
-				game.enableControls(); // enables on-screen arrow keys (optional)
+				game.trigger('snake.enable.controls'); // enables on-screen arrow keys (optional)
 			}
 
-			$canvas.on('snake.collide', function() {
+			game.on('snake.game.collide', function() {
 				$container.find('.snake-crash').fadeIn();
-				$canvas.addClass('snake-crashed');
+				game.addClass('snake-crashed');
 			});
 
-			// game.play();
+			game.on('snake.game.play', function(event, snake, gameOver) {
+				game.trigger('snake.reset');
+				game.removeClass('snake-crashed');
+				game.addClass('snake-playing');
+			});
+
 			$('.snake-play').on('click', function(e) {
 				e.preventDefault();
-				game.reset();
-				$canvas.removeClass('snake-crashed');
-				$canvas.addClass('snake-playing');
 				$(this).parent().fadeOut(function() {
 					canvas.focus(); // include if you want the game to focus when the page loads
-					game.play();
+					game.trigger('snake.play');
 				});
 			});
-
-			window.addEventListener('resize', resizeCanvas);
-			resizeCanvas();
 		}
 	});
 })(jQuery); // Fully reference jQuery after this point.
