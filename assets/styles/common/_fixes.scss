@@ -1,6 +1,21 @@
-/*==========  Fixes overlapping admin bar  ==========*/
+/*
+	Fixes overlapping admin bar
+ */
+
 @media screen and (max-width: 600px) {
     #wpadminbar {
 		position: fixed !important;
 	}
+}
+
+/*
+	Fixes font smoothing
+ */
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    -webkit-backface-visibility: hidden;
 }

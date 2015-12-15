@@ -9,9 +9,13 @@
   "dependencies": {
     "foundation-sites": "~6.0.4",
     "jquery-dom-router": "master",
-    "bourbon": "~4.2.6"
+    "bourbon": "4.2.6",
+    "components-modernizr": "2.8.3"
   },
   "overrides": {
+  	"bourbon": {
+  		"main": []
+  	},
     "foundation-sites": {
       "main": [
         "./scss/foundation.scss",

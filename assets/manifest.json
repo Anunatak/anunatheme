@@ -2,6 +2,7 @@
   "dependencies": {
     "main.js": {
       "files": [
+      	"scripts/snake.js",
       	"scripts/navigation.js",
         "scripts/main.js"
       ],

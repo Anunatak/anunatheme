@@ -1,0 +1,70 @@
+.snake-container {
+	.snake-color {
+		display: none;
+		&.snake {
+			color: darken(#fff, 50%);
+		}
+		&.apple {
+			color: #ff0000;
+		}
+	}
+	position: relative;
+	.snake-intro {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: rem-calc(200);
+		height: rem-calc(100);
+		margin-top: rem-calc(-(100/2));
+		margin-left: rem-calc(-(200/2));
+		background: darken(#fff, 5%);
+		text-align: center;
+		z-index: 150;
+		button {
+			background-color: #000;
+			@include font(20, 36);
+			color: #fff;
+			padding: 0 rem-calc(10);
+			margin-top: rem-calc(32);
+		}
+	}
+	.snake-crash {
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: rem-calc(200);
+		height: rem-calc(150);
+		margin-top: rem-calc(-(150/2));
+		margin-left: rem-calc(-(200/2));
+		background: darken(#fff, 5%);
+		text-align: center;
+		z-index: 150;
+		p {
+			padding: rem-calc(20);
+		}
+		button {
+			background-color: #000;
+			@include font(20, 36);
+			color: #fff;
+			padding: 0 rem-calc(10);
+			margin-top: rem-calc(12);
+		}
+	}
+	.snake-canvas {
+		position: relative;
+		z-index: 100;
+		opacity: 0.1;
+		@include transition(opacity 1s ease, border-color .5s ease);
+		outline: none;
+		border: 1px solid transparent;
+		&.snake-playing {
+			opacity: 1;
+			border-color: darken(#fff, 20%);
+		}
+		&.snake-crashed {
+			border-color: red;
+			opacity: 0.1;
+		}
+	}
+}

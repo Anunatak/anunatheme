@@ -1,9 +1,10 @@
 @import "common/_variables";
 
+@import "components/_bourbon";
+
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
-@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
 // endbower
 
 @import "common/_global";

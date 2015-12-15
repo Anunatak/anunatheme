@@ -18,7 +18,7 @@ function title() {
 	} elseif (is_search()) {
 		$title = sprintf(__('Search Results for %s', 'anunatheme'), get_search_query());
 	} elseif (is_404()) {
-		$title = __('Not Found', 'anunatheme');
+		$title = __('Page Not Found', 'anunatheme');
 	} else {
 		$title = get_the_title();
 	}
