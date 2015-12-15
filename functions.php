@@ -10,12 +10,15 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
-  'lib/blade.php',    // Scripts and stylesheets
-  'lib/assets.php',    // Scripts and stylesheets
-  'lib/extras.php',    // Custom functions
-  'lib/setup.php',     // Theme setup
-  'lib/titles.php',    // Page titles
-  'lib/customizer.php' // Theme customizer
+  'lib/blade.php',
+  'lib/assets.php',
+  'lib/extras.php',
+  'lib/setup.php',
+  'lib/titles.php',
+  'lib/customizer.php',
+  'lib/anunatak.php',
+  'lib/acf.php',
+  'lib/cpt.php',
 ];
 
 foreach ($sage_includes as $file) {
