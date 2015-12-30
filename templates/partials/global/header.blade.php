@@ -4,7 +4,9 @@
 --}}
 <header class="banner">
 	<div class="container">
-		<a class="brand" href="{{ esc_url(home_url('/')) }}">{!! bloginfo('name') !!}</a>
+		<a class="brand" href="{{ esc_url(home_url('/')) }}">
+			@include('svg.logo')
+		</a>
 	</div>
 </header>
 

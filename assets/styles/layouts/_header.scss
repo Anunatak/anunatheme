@@ -1,6 +1,12 @@
 .banner {
 	@include grid-row;
+	padding-top: rem-calc(40);
 	.container {
 		@include grid-column(10);
+		.brand {
+			svg * {
+				fill: $primary-color;
+			}
+		}
 	}
 }

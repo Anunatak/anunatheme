@@ -31,7 +31,6 @@
 		close: function() {
 			this._removeBodyClass();
 			setTimeout(function() {
-				console.log('klekk');
 				$('html').trigger('click');
 			}, 1000);
 		},
