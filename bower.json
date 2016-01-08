@@ -11,7 +11,7 @@
     "jquery-dom-router": "master",
     "bourbon": "4.2.6",
     "components-modernizr": "2.8.3",
-    "jquery-snake": "*"
+    "jquery-snake": "master"
   },
   "overrides": {
     "bourbon": {

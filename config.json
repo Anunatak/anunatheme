@@ -1,0 +1,13 @@
+{
+	"src_dir": "./assets/",
+	"dest_dir": "./dist/",
+	"scripts": {
+		"src_dir": "scripts/coffee/",
+		"dest_dir": "scripts/"
+	},
+	"styles": {
+		"src_dir": "styles/",
+		"dest_dir": "styles/",
+		"extension": ".scss"
+	}
+}

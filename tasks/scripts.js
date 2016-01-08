@@ -49,7 +49,7 @@ gulp.task('coffee', function () {
     return b.bundle()
       .pipe(source(source_dir + 'app.coffee'))
       .on('error', gutil.log)
-      .pipe( rename('scripts.js') )
+      .pipe( rename('main.js') )
       // .pipe( gulpif( enabled.maps, sourcemaps.init({ loadMaps: true }) ) )
       // .pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
       .pipe( gulp.dest(dest_dir) )
@@ -58,7 +58,7 @@ gulp.task('coffee', function () {
 
 gulp.task('scripts', ['coffee'], function() {
   var dest_dir = config.dest_dir + config.scripts.dest_dir;
-  return gulp.src(dest_dir + 'scripts.js')
+  return gulp.src(dest_dir + 'main.js')
       .pipe( gulpif( enabled.minify, uglify() ) )
       .pipe( gulp.dest(dest_dir) );
 });
