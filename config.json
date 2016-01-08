@@ -2,7 +2,7 @@
 	"src_dir": "./assets/",
 	"dest_dir": "./dist/",
 	"scripts": {
-		"src_dir": "scripts/coffee/",
+		"src_dir": "scripts/",
 		"dest_dir": "scripts/"
 	},
 	"styles": {

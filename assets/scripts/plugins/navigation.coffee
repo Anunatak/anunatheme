@@ -1,35 +1,48 @@
+# Require all modules
 jQ = jQuery
 
+# The menu class
 class Menu
-	$body: jQ('body')
-	$content: jQ('div[role="document"]')
-	$trigger: jQ('[data-navigation-trigger]')
-	$inner: jQ('[data-navigation-container]')
-	bodyActiveClass: 'nav-open'
+	$body: jQ('body') # Body element
+	$content: jQ('div[role="document"]') # Site content element
+	$trigger: jQ('[data-navigation-trigger]') # Menu trigger element
+	$inner: jQ('[data-navigation-container]') # Inner navigation element
+	bodyActiveClass: 'nav-open' # Class to add when menu is open
 
+	# Toggle navigation
 	toggle: ->
 		if !this._hasBodyClass()
 			this.open()
 		else
 			this.close()
 
+	# Open navigation
 	open: ->
 		this._addBodyClass()
+		this.$body.trigger('navigation.opened');
 
+	# Close navigation
 	close: ->
 		this._removeBodyClass()
+		this.$body.trigger('navigation.closed');
 
+	# Check if the body has the active class
 	_hasBodyClass: ->
 		return this.$body.hasClass(this.bodyActiveClass)
 
+	# Add class to the body
 	_addBodyClass: ->
 		if !this._hasBodyClass()
 			this.$body.addClass(this.bodyActiveClass)
+		this.$body.trigger('navigation.class.added');
 
+	# Remove class from the body
 	_removeBodyClass: ->
 		if this._hasBodyClass()
 			this.$body.removeClass(this.bodyActiveClass)
+		this.$body.trigger('navigation.class.removed');
 
+	# Bind DOM
 	bind: ->
 		self = this
 		self.$trigger.on 'click', ->
@@ -46,4 +59,7 @@ class Menu
 				e.preventDefault()
 				self.open()
 
+		self.$body.trigger('navigation.binded');
+
+# Export the module
 module.exports = Menu

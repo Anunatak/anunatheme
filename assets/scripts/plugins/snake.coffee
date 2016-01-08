@@ -38,4 +38,5 @@ class SnakeBind
 				canvas.focus()
 				$canvas.trigger('snake.play')
 
+# Export the module
 module.exports = SnakeBind
