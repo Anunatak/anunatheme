@@ -7,10 +7,11 @@ Snake     = require '../plugins/snake'
 menu  = new Menu
 snake = new Snake
 
-# Define all routes
-class Routes
+# Export the module
+module.exports =
 	common: ->
 		menu.bind()
+
 	home: ->
 		console.log "Home"
 
@@ -20,5 +21,3 @@ class Routes
 	error404: ->
 		snake.bind()
 
-# Export the module
-module.exports = Routes
