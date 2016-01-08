@@ -1,11 +1,7 @@
 # Get modules
 jQ        = jQuery
-Menu      = require '../plugins/navigation'
-Snake     = require '../plugins/snake'
-
-# Set instances
-menu  = new Menu
-snake = new Snake
+menu      = require '../plugins/navigation'
+snake     = require '../plugins/snake'
 
 # Export the module
 module.exports =

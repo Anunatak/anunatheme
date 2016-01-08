@@ -1,8 +1,8 @@
 # Require all modules
 jQ = jQuery
 
-# The menu class
-class Menu
+# Export the module
+module.exports =
 	$body: jQ('body') # Body element
 	$content: jQ('div[role="document"]') # Site content element
 	$trigger: jQ('[data-navigation-trigger]') # Menu trigger element
@@ -60,6 +60,3 @@ class Menu
 				self.open()
 
 		self.$body.trigger('navigation.binded');
-
-# Export the module
-module.exports = Menu

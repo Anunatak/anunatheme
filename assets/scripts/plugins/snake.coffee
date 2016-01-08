@@ -3,7 +3,8 @@ jQ        = jQuery
 Snake     = require 'jquery-snake'
 Modernizr = require 'browsernizr'
 
-class SnakeBind
+# Export the module
+module.exports =
 	bind: ->
 		$container = jQ('.snake-container')
 		$canvas = $container.find('.snake-canvas')
@@ -37,6 +38,3 @@ class SnakeBind
 			$(this).parent().fadeOut ->
 				canvas.focus()
 				$canvas.trigger('snake.play')
-
-# Export the module
-module.exports = SnakeBind
