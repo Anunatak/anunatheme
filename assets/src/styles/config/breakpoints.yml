@@ -1,0 +1,12 @@
+small:
+  min: 0px
+  max: 720px
+medium:
+  min: 721px
+  max: 1024px
+large:
+  min: 1025px
+  max: 1440px
+xlarge:
+  min: 1441px
+  max: 9999px

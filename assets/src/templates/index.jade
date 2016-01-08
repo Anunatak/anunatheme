@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+	head
+		title Page Title
+		link(rel="stylesheet",href="css/style.css")
+		script(src="http://localhost:35729/livereload.js?snipver=1")
+		script(src="js/scripts.js")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		body
+			h1 Jade is supercool
+			.container
+				- var n = 0
+				while n < 6
+					.item
+						p Test
+					- n++
