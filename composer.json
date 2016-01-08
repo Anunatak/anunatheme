@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "tormjens/wp-blade": "dev-master"
+        "tormjens/wp-blade": "dev-master",
+        "jjgrainger/wp-custom-post-type-class": "dev-master"
     }
 }

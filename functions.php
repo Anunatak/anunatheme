@@ -1,5 +1,9 @@
 <?php
 /**
+ * Include Composer autoloader
+ */
+require get_template_directory() .'/vendor/autoload.php';
+/**
  * Sage includes
  *
  * The $sage_includes array determines the code library included in your theme.
