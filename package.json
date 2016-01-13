@@ -25,8 +25,5 @@
     "vinyl-buffer": "^1.0.0"
   },
   "dependencies": {
-    "jquery-browserify": "^1.8.1",
-    "ga-browser": "^1.0.0",
-    "typekit-shim": "0.0.1"
   }
 }

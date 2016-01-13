@@ -13,23 +13,27 @@
 
 @include foundation-everything;
 
-
+// Common styles
 @import "common/_global";
+@import "common/_fixes";
+
+// Components
 @import "components/_buttons";
 @import "components/_comments";
 @import "components/_forms";
 @import "components/_grid";
 @import "components/_wp-classes";
+@import "components/_snake";
+
+// Layouts
 @import "layouts/_header";
 @import "layouts/_sidebar";
 @import "layouts/_footer";
 @import "layouts/_pages";
 @import "layouts/_posts";
 @import "layouts/_navigation";
+
+// Pages
 @import "pages/_404";
 @import "pages/_home";
-
-
-// Fixes
-@import "common/_fixes";
 
