@@ -13,5 +13,9 @@
 	"images": {
 		"src_dir": "images/",
 		"dest_dir": "images/"
+	},
+	"fonts": {
+		"src_dir": "fonts/",
+		"dest_dir": "fonts/"
 	}
 }

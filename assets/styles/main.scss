@@ -6,11 +6,11 @@
 
 @import "components/_bourbon";
 
-// Automatically injected Bower dependencies via wiredep (never manually edit this block)
-// bower:scss
+// Third party
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
-// endbower
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
 
+// Get all F6 styles
 @include foundation-everything;
 
 // Common styles
