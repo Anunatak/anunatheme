@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a274a0294507cbd28b2fd2abf276341",
+    "hash": "e6852df6df6ab74606bf9b419c61a6be",
     "content-hash": "ba119edaf312f08f2779b1a02a6bcebe",
     "packages": [
         {
@@ -543,12 +543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tormjens/wp-blade.git",
-                "reference": "0da3b93048cf2c7105af7f78194315770bddfe9e"
+                "reference": "f7ccf3f3887628cb24bc07eade22d868b08230b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/0da3b93048cf2c7105af7f78194315770bddfe9e",
-                "reference": "0da3b93048cf2c7105af7f78194315770bddfe9e",
+                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/f7ccf3f3887628cb24bc07eade22d868b08230b5",
+                "reference": "f7ccf3f3887628cb24bc07eade22d868b08230b5",
                 "shasum": ""
             },
             "require": {
@@ -571,7 +571,7 @@
                 }
             ],
             "description": "Use Blade templates in your WordPress theme",
-            "time": "2015-12-07 10:23:42"
+            "time": "2016-01-13 15:23:39"
         }
     ],
     "packages-dev": [],
