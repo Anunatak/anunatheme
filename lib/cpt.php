@@ -2,9 +2,10 @@
 
 namespace AnunaTheme\CPT;
 
+use AnunaTheme\Classes\PostType;
+
 /**
  * Register a post type called "person"
  */
-$people = new \CPT('person');
-$people->set_textdomain('anunatheme');
+$people = new PostType('person');
 

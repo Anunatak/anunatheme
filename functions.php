@@ -14,6 +14,7 @@ require get_template_directory() .'/vendor/autoload.php';
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
+  'lib/config.php',
   'lib/blade.php',
   'lib/ajax.php',
   'lib/assets.php',
