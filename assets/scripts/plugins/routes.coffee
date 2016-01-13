@@ -2,7 +2,7 @@
 jQ        = jQuery
 menu      = require '../plugins/navigation'
 snake     = require '../plugins/snake'
-Ajax      = require '../plugins/Ajax'
+Ajax      = require '../classes/Ajax'
 
 # Export the module
 module.exports =

@@ -78,6 +78,16 @@ See for example the `index.php`-file for an example on how to extend upon layout
 
 All template files are located in the `templates`-directory. The folder `cache` acts as a cache for WordPress template files (e.g. all template files that WordPress' template hierarchy searches for).
 
+## Gulp
+
+In the themes gulpfile there are several tasks defined for a great workflow.
+* `images` will optimize images located in `assets/images`.
+* `scripts` will compile the CoffeeScript and Browserify.
+* `styles` will compile the SCSS.
+* `watch` will watch files and run tasks when they are needed.
+
+When developing source maps are created, and the output will not be minified (`styles` and `scripts`). To create a production-ready file, simply add the `--production` argument when running gulp (`gulp --production`)
+
 ## Getting Started
 
 1. Install Composer dependencies: `composer install`

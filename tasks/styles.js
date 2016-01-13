@@ -5,6 +5,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if');
 var argv       = require('minimist')(process.argv.slice(2));
 var livereload = require('gulp-livereload');
+var notify     = require('gulp-notify');
 
 // CSS Modules
 var sass       = require('gulp-sass');
@@ -39,5 +40,6 @@ gulp.task('styles', function () {
         .pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
         .pipe( gulpif( enabled.minify, cssnano() ) )
         .pipe( gulp.dest(dest_dir) )
-        .pipe( livereload() );
+        .pipe( livereload() )
+        .pipe( notify('AnunaTheme: Styles compiled'+ (argv.production ? ' for production' : '') +'.') );
 });

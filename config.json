@@ -9,5 +9,9 @@
 		"src_dir": "styles/",
 		"dest_dir": "styles/",
 		"extension": ".scss"
+	},
+	"images": {
+		"src_dir": "images/",
+		"dest_dir": "images/"
 	}
 }

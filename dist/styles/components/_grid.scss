@@ -1,0 +1,4 @@
+// Grid system
+.main {
+	@include grid-col($main-sm-columns);
+}

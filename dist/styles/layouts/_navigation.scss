@@ -1,0 +1,174 @@
+// Nav Container: Variables
+$nav-container-width: 		320;
+$nav-container-base: 		#000;
+$nav-container-gutter: 		40;
+$nav-container-spacing: 	80;
+$nav-container-position:	right;
+$nav-container-duration:  	.5s;
+$nav-container-easing:  	ease;
+
+// Nav Container: Position Mixin
+@mixin nav-position {
+	position: fixed;
+	z-index: 600;
+	@include transition( $nav-container-position $nav-container-duration $nav-container-easing );
+	@if($nav-container-position == left) {
+		width: rem-calc($nav-container-width);
+		left: rem-calc(0 - $nav-container-width);
+		top: 0;
+		bottom: 0;
+		.nav-open & {
+			left: 0;
+		}
+	}
+	@else if($nav-container-position == right) {
+		width: rem-calc($nav-container-width);
+		right: rem-calc(0 - $nav-container-width);
+		top: 0;
+		bottom: 0;
+		.nav-open & {
+			right: 0;
+		}
+	}
+
+}
+
+// Nav Container: Styles
+div.nav-container {
+	@include nav-position;
+	background-color: $nav-container-base;
+	nav.nav-primary {
+		overflow-x: hidden;
+		overflow-y: auto;
+		position: absolute;
+		top: rem-calc($nav-container-spacing/2);
+		bottom: rem-calc($nav-container-spacing/2);
+		left: rem-calc($nav-container-gutter/2);
+		right: rem-calc($nav-container-gutter/2);
+		ul {
+			list-style: none;
+			margin: 0;
+			li {
+				a {
+					color: #fff;
+					@include font(18, 24);
+					&:hover, &:focus {
+						font-weight: bold;
+					}
+				}
+				&.active > a {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+// Nav Trigger: Variables
+$nav-trigger-color: #000;
+$nav-trigger-active-color: #fff;
+$nav-trigger-focus-color: darken(#fff, 60%);
+$nav-trigger-height: 50;
+$nav-trigger-width: 50;
+$nav-trigger-line-width: 40;
+$nav-trigger-line-height: 3;
+
+// Nav Trigger: Lines Mixin
+@mixin nav-lines {
+	display: block;
+	text-indent: -99999px;
+	height: rem-calc($nav-trigger-line-height);
+	width: rem-calc($nav-trigger-line-width);
+	background-color: $nav-trigger-color;
+	position: absolute;
+	left: 50%;
+	margin-left: rem-calc(-($nav-trigger-line-width/2));
+	@include transition(all .3s ease);
+	transform-origin: 0 0;
+	&:before {
+		content: ' ';
+		height: rem-calc($nav-trigger-line-height);
+		width: rem-calc($nav-trigger-line-width);
+		background-color: $nav-trigger-color;
+		position: absolute;
+		left: 0;
+		display: block;
+		right: 0;
+		top: rem-calc(0 - ($nav-trigger-line-height * 3));
+		@include transition(all .5s ease);
+		@include transition-property(transform top);
+	}
+	&:after {
+		content: ' ';
+		height: rem-calc($nav-trigger-line-height);
+		width: rem-calc($nav-trigger-line-width);
+		background-color: $nav-trigger-color;
+		position: absolute;
+		left: 0;
+		display: block;
+		right: 0;
+		bottom: rem-calc(0 - ($nav-trigger-line-height * 3));
+		@include transition(all .5s ease);
+		@include transition-property(transform top);
+	}
+}
+
+@mixin nav-lines-open {
+	background-color: transparent;
+	@include transform(rotate(0deg) translateX(0) translateY(10px));
+	&:before {
+		@include transform(rotate3d(0,0,1,45deg) translateZ(0));
+		background-color: #fff;
+		// top: 0;
+	}
+	&:after {
+		@include transform(rotate3d(0,0,1,-45deg) translateZ(0) translateX(13px) translateY(-12px));
+		background-color: #fff;
+		// top: 0;
+	}
+}
+
+@mixin nav-lines-focus {
+	background-color: transparent;
+	@include transform(rotate(-45deg) translateX(-10px) translateY(25px));
+	&:before {
+		@include transform(rotate3d(0,0,1,45deg) translateZ(0));
+		// top: 0;
+	}
+	&:after {
+		@include transform(rotate3d(0,0,1,-45deg) translateZ(0) translateX(13px) translateY(-12px));
+		// top: 0;
+	}
+}
+
+// Nav Trigger: Styles
+button.nav-trigger {
+	position: fixed;
+	z-index: 800;
+	@if($nav-container-position == left) {
+		left: rem-calc($nav-container-width - ($nav-trigger-width + 24));
+		top: rem-calc(24);
+	}
+	@else if($nav-container-position == right) {
+		right: rem-calc(24);
+		top: rem-calc(24);
+	}
+	height: rem-calc($nav-trigger-height);
+	width: rem-calc($nav-trigger-width);
+	outline: none;
+	-webkit-perspective: 900000px;
+	perspective: 900000px;
+	span.nav-lines {
+		@include nav-lines;
+	}
+	&:focus {
+		span.nav-lines {
+			@include nav-lines-focus;
+		}
+	}
+	.nav-open & {
+		span.nav-lines {
+			@include nav-lines-open;
+		}
+	}
+}

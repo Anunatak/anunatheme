@@ -7,6 +7,7 @@ var argv       = require('minimist')(process.argv.slice(2));
 var livereload = require('gulp-livereload');
 var concat     = require('gulp-concat');
 var gutil      = require('gulp-util');
+var notify     = require('gulp-notify');
 
 // Scripts Modules
 var source = require('vinyl-source-stream');
@@ -27,7 +28,7 @@ var enabled = {
   minify: argv.production,
 };
 
-gulp.task('coffee', function () {
+gulp.task('scripts', function () {
 
     var source_dir = config.src_dir + config.scripts.src_dir;
     var dest_dir = config.dest_dir + config.scripts.dest_dir;
@@ -37,8 +38,9 @@ gulp.task('coffee', function () {
     });
 
     b.transform(coffeeify, {
-      bare: false,
-      header: true
+    	sourceMap: enabled.maps,
+		bare: false,
+		header: true
     });
 
     b.transform('deamdify');
@@ -47,18 +49,14 @@ gulp.task('coffee', function () {
     b.add(source_dir + 'app.coffee')
 
     return b.bundle()
-      .pipe(source(source_dir + 'app.coffee'))
-      .on('error', gutil.log)
-      .pipe( rename('main.js') )
-      // .pipe( gulpif( enabled.maps, sourcemaps.init({ loadMaps: true }) ) )
-      // .pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
-      .pipe( gulp.dest(dest_dir) )
-      .pipe( livereload() );
-});
-
-gulp.task('scripts', ['coffee'], function() {
-  var dest_dir = config.dest_dir + config.scripts.dest_dir;
-  return gulp.src(dest_dir + 'main.js')
+      .pipe( source(source_dir + 'app.coffee') )
+      .on( 'error', gutil.log )
+      .pipe( buffer() )
+      .pipe( gulpif( enabled.maps, sourcemaps.init({ loadMaps: true }) ) )
       .pipe( gulpif( enabled.minify, uglify() ) )
-      .pipe( gulp.dest(dest_dir) );
+      .pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
+      .pipe( rename('main.js') )
+      .pipe( gulp.dest(dest_dir) )
+      .pipe( livereload() )
+      .pipe( notify('AnunaTheme: Scripts compiled'+ (argv.production ? ' for production' : '') +'.') );
 });

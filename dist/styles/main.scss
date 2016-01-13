@@ -1,0 +1,35 @@
+@import "common/_mixins";
+@import "common/_variables";
+
+// Foundation variables goes here, before including foundation framework
+// $body-bg: pink;
+
+@import "components/_bourbon";
+
+// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// bower:scss
+@import "../../bower_components/foundation-sites/scss/foundation.scss";
+// endbower
+
+@include foundation-everything;
+
+
+@import "common/_global";
+@import "components/_buttons";
+@import "components/_comments";
+@import "components/_forms";
+@import "components/_grid";
+@import "components/_wp-classes";
+@import "layouts/_header";
+@import "layouts/_sidebar";
+@import "layouts/_footer";
+@import "layouts/_pages";
+@import "layouts/_posts";
+@import "layouts/_navigation";
+@import "pages/_404";
+@import "pages/_home";
+
+
+// Fixes
+@import "common/_fixes";
+
