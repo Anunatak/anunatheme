@@ -12,6 +12,8 @@ If you are looking for a complete production-ready theme, move along. AnunaTheme
 * [Gulp](http://gulpjs.com)
 * [Foundation for Sites 6](http://foundation.zurb.com/sites/docs/)
 * Off Canvas Menu
+* [CoffeeScript](http://coffeescript.org/)
+* [Browserify](http://browserify.org/)
 * [Bourbon](http://bourbon.io/)
 
 ## Requirements
@@ -24,6 +26,31 @@ If you are looking for a complete production-ready theme, move along. AnunaTheme
 | gulp  >= 3.8.10 | `gulp -v`            | `npm install -g gulp` |
 | Bower >= 1.3.12 | `bower -v`           | `npm install -g bower` |
 | Composer        | `composer --version` | [getcomposer.org](http://getcomposer.org) |
+
+## Ajax Requests
+
+In AnunaTheme AJAX is made really simple.
+
+On the server side, in your `lib/ajax.php`
+```php
+Ajax::create('my_cool_action', function($request) {
+	echo $request->get('cool_parameter_from_request');
+});
+```
+
+On the client side, in your `assets/scripts/plugins/routes.coffee`:
+```coffee
+new Ajax 'my_cool_action', ( (response) ->
+	console.log response
+),
+	cool_parameter_from_request: 'You are cool!'
+```
+
+The client side Ajax class accepts the following parameters:
+* `action`: The action to send the request to.
+* `callback`: A callback function.
+* `data` (optional): An object of data
+* `method` (optional): The method to use for the request. Defaults to `'GET'`
 
 ## 404 Page
 

@@ -2,6 +2,7 @@
 jQ        = jQuery
 menu      = require '../plugins/navigation'
 snake     = require '../plugins/snake'
+Ajax      = require '../plugins/Ajax'
 
 # Export the module
 module.exports =
@@ -9,7 +10,10 @@ module.exports =
 		menu.bind()
 
 	home: ->
-		console.log "Home"
+		new Ajax 'my_cool_action', ( (response) ->
+			console.log response
+		),
+			cool_parameter_from_request: 'You are cool!'
 
 	page: ->
 		console.log "Page"

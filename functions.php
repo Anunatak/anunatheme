@@ -15,6 +15,7 @@ require get_template_directory() .'/vendor/autoload.php';
  */
 $sage_includes = [
   'lib/blade.php',
+  'lib/ajax.php',
   'lib/assets.php',
   'lib/extras.php',
   'lib/setup.php',
