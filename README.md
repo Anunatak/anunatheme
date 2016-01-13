@@ -62,11 +62,11 @@ The client side Ajax class accepts the following parameters:
 
 We've incorporated a fun 404 page in the theme. When your visitors lands somewhere that doesn't exist they can play the ever popular [Snake game](https://github.com/ncpierson/Snake). The code behind it courtesy of [Nick Pierson](http://nickpierson.me), which developed the game while becoming more familiar with JavaScript. We've made some minor adjustments which allows us to modify colors and listen for events. See [the Github page for the plugin](https://github.com/tormjens/jquery-snake).
 
-## DOM Based Router
+## DOM Based Routing
 
-Sage has this thing they call DOM Based routing. In Anunastart you can route your stuff in the same way, except we are using this awesome jQuery-plugin called [jquery-dom-router](https://github.com/tormjens/jquery-dom-router).
+Sage has this thing they call DOM Based routing. In AnunaTheme you can route your stuff in the same way, except we are using this awesome jQuery-plugin called [jquery-dom-router](https://github.com/tormjens/jquery-dom-router).
 
-It's kind of exactly the same, only it responds to live changes of classes on your `<body>`-tag and the syntax is way sexier. Check it out!
+We've set this up so you can add your dom routes in `assets/scripts/plugins/routes.coffee`.
 
 ## Blade
 
