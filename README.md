@@ -31,12 +31,18 @@ If you are looking for a complete production-ready theme, move along. AnunaTheme
 
 In AnunaTheme AJAX is made really simple.
 
+### PHP
+
 On the server side, in your `lib/ajax.php`
 ```php
 Ajax::create('my_cool_action', function($request) {
 	echo $request->get('cool_parameter_from_request');
 });
 ```
+
+The `$request` object is an instance of `Symfony\Component\HttpFoundation\Request`. [Check out the documentation](http://symfony.com/doc/current/components/http_foundation/introduction.html#accessing-request-data) for usage instructions.
+
+### CoffeeScript
 
 On the client side, in your `assets/scripts/plugins/routes.coffee`:
 ```coffee
