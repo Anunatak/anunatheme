@@ -112,7 +112,62 @@ function assets() {
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
+/**
+ * Editor style
+ */
 function editor_style() {
 	add_editor_style( Assets\asset_path('styles/editor-style.css') );
 }
 add_action('admin_init', __NAMESPACE__ . '\\editor_style', 100);
+
+/**
+ * Typekit
+ */
+function typekit() { ?>
+<script src="//use.typekit.net/<?php echo ANUNATHEME_TYPEKIT_ID ?>.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+
+<?php }
+if ( ANUNATHEME_TYPEKIT_ID ) {
+	add_action( 'wp_head', __NAMESPACE__. '::typekit', 2 );
+}
+
+/**
+ * Google Analytics
+ */
+function analytics() { ?>
+<script>
+	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	e.src='//www.google-analytics.com/analytics.js';
+	r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	ga('create','<?php echo ANUNATHEME_ANALYTICS_ID; ?>');ga('send','pageview');
+</script>
+
+<?php }
+if ( ANUNATHEME_ANALYTICS_ID && !current_user_can( 'manage_options' ) ) {
+	add_action( 'wp_footer', __NAMESPACE__. '::analytics', 20 );
+}
+
+/**
+ * Facebook Pixel
+ */
+function pixel() { ?>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '<?php echo ANUNATHEME_FACEBOOK_PIXEL_ID ?>');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=<?php echo ANUNATHEME_FACEBOOK_PIXEL_ID ?>&ev=PageView&noscript=1"
+/></noscript>
+
+<?php }
+if ( ANUNATHEME_FACEBOOK_PIXEL_ID && !current_user_can( 'manage_options' ) ) {
+	add_action( 'wp_head', __NAMESPACE__. '::pixel', 20 );
+}

@@ -1,1 +1,1204 @@
-!function e(t,n,i){function o(r,a){if(!n[r]){if(!t[r]){var u="function"==typeof require&&require;if(!a&&u)return u(r,!0);if(s)return s(r,!0);var c=new Error("Cannot find module '"+r+"'");throw c.code="MODULE_NOT_FOUND",c}var l=n[r]={exports:{}};t[r][0].call(l.exports,function(e){var n=t[r][1][e];return o(n?n:e)},l,l.exports,e,t,n,i)}return n[r].exports}for(var s="function"==typeof require&&require,r=0;r<i.length;r++)o(i[r]);return o}({1:[function(e,t,n){(function(){var t,n,i;n=jQuery,t=e("./../../bower_components/jquery-dom-router/src/jquery.dom-router.js"),i=e("./plugins/routes"),new t(document,i)}).call(this)},{"./../../bower_components/jquery-dom-router/src/jquery.dom-router.js":6,"./plugins/routes":4}],2:[function(e,t,n){(function(){var e,n;n=jQuery,e=function(){function e(e,t,n,i){this.action=e,this.callback=t,this.data=n,this.method=i,this.setup()}return e.prototype.setup=function(){var e;return e=this.data||{},e=n.extend(e,{action:this.action}),n.ajax({url:App.ajax,type:this.method||"GET",data:e,success:this.callback,error:function(e){return console.log(e)}})},e}(),t.exports=e}).call(this)},{}],3:[function(e,t,n){(function(){var e;e=jQuery,t.exports={$body:e("body"),$content:e('div[role="document"]'),$trigger:e("[data-navigation-trigger]"),$inner:e("[data-navigation-container]"),bodyActiveClass:"nav-open",toggle:function(){return this._hasBodyClass()?this.close():this.open()},open:function(){return this._addBodyClass(),this.$body.trigger("navigation.opened")},close:function(){return this._removeBodyClass(),this.$body.trigger("navigation.closed")},_hasBodyClass:function(){return this.$body.hasClass(this.bodyActiveClass)},_addBodyClass:function(){return this._hasBodyClass()||this.$body.addClass(this.bodyActiveClass),this.$body.trigger("navigation.class.added")},_removeBodyClass:function(){return this._hasBodyClass()&&this.$body.removeClass(this.bodyActiveClass),this.$body.trigger("navigation.class.removed")},bind:function(){var e;return e=this,e.$trigger.on("click",function(){return e.toggle()}),e.$inner.find("li a").last().on("keydown",function(t){return t.shiftKey?void 0:(t.preventDefault(),e.close(),e.$content.find("a").first().focus())}),e.$inner.find("li a").first().on("focus",function(t){return t.shiftKey?void 0:(t.preventDefault(),e.open())}),e.$body.trigger("navigation.binded")}}}).call(this)},{}],4:[function(e,t,n){(function(){var n,i,o,s;i=jQuery,o=e("../plugins/navigation"),s=e("../plugins/snake"),n=e("../classes/Ajax"),t.exports={common:function(){return o.bind()},home:function(){return new n("my_cool_action",function(e){return console.log(e)},{cool_parameter_from_request:"You are cool!"})},page:function(){return console.log("Page")},error404:function(){return s.bind()}}}).call(this)},{"../classes/Ajax":2,"../plugins/navigation":3,"../plugins/snake":5}],5:[function(e,t,n){(function(){var n,i,o;o=jQuery,i=e("./../../../bower_components/jquery-snake/dist/jquery.snake.js"),n=e("browsernizr"),t.exports={bind:function(){var e,t,s,r,a,u,c,l;return t=o(".snake-container"),e=t.find(".snake-canvas"),r=e.get(0),s=t.find(".snake-color.apple").css("color"),c=t.find(".snake-color.snake-head").css("color"),l=t.find(".snake-color.snake-tail").css("color"),u=t.find(".snake-color.score").css("color"),a=new i(r,{snakeHeadColor:c,snakeTailColor:l,appleColor:s,scoreColor:u}),n.touch&&e.trigger("snake.enable.controls"),e.on("snake.game.collide",function(){return t.find(".snake-crash").fadeIn(),e.addClass("snake-crashed")}),e.on("snake.game.play",function(t,n,i){return e.trigger("snake.reset"),e.removeClass("snake-crashed"),e.addClass("snake-playing")}),o(".snake-play").on("click",function(t){return t.preventDefault(),$(this).parent().fadeOut(function(){return r.focus(),e.trigger("snake.play")})})}}}).call(this)},{"./../../../bower_components/jquery-snake/dist/jquery.snake.js":7,browsernizr:8}],6:[function(e,t,n){!function(e){e.fn.watch||e.fn.unwatch||(e.fn.watch=function(t,n){return this.each(function(){var i=this,o=i[t];e(i).data("watch_timer",setInterval(function(){i[t]!==o&&(n.call(i,t,o,i[t]),o=i[t])},100))})},e.fn.unwatch=function(){return this.each(function(){clearInterval(e(this).data("watch_timer"))})}),e.DOMRouter||(e.DOMRouter={router:function(t,n){var i=this;i.$el=e(t),i.el=t,i.$el.data("DOMRouter.router",i),i.element=i.$el.find(e.DOMRouter.defaults.element),i.element.addClass("dom-router-ready"),i.init=function(){i.routes=n,e(document).ready(i.load),i.executed=[],i.element.watch("className",function(t,n,o){var s=o.replace(/-/g,"_").split(/\s+/);e.each(s,function(e,t){i.routeExecuted(t)||(i.fire(t),i.executed.push(t))})})},i.routeExecuted=function(e){return i.executed.indexOf(e)>-1},i.classes=function(){return i.element.get(0).className.replace(/-/g,"_").split(/\s+/)},i.load=function(){i.fire("common"),e.each(i.classes(),function(e,t){i.fire(t),i.executed.push(t)})},i.fire=function(e,t){var n,o=i.routes;n=""!==e,n=n&&o[e],n=n&&"function"==typeof o[e],n&&o[e](t)},i.init()},defaults:{element:"body"}}),e.fn.router=function(t){return this.each(function(){new e.DOMRouter.router(this,t)})},"undefined"!=typeof t&&t.exports&&(t.exports=e.DOMRouter.router)}(jQuery)},{}],7:[function(e,t,n){function o(e,t){this.x=e,this.y=t}function s(e){function t(t){m=!0;var n=t.touches[0].pageX-e.offsetLeft,o=t.touches[0].pageY-e.offsetTop;i(n,o)}function n(t){if(console.log(e),!m){var n=t.pageX-e.offsetLeft,o=t.pageY-e.offsetTop;return i(n,o)}}function i(e,t){s(e,t)?y.turnLeft():r(e,t)?y.turnRight():a(e,t)?y.turnUp():u(e,t)&&y.turnDown()}function s(e,t){return c(h,e,t)}function r(e,t){return c(d,e,t)}function a(e,t){return c(p,e,t)}function u(e,t){return c(g,e,t)}function c(e,t,n){var i=e.x<=t&&t<=e.x+l,o=e.y<=n&&n<=e.y+l;return i&&o}const l=50,f=5;var h,d,p,g,y=null;this.updateLocation=function(){h=new o(e.width-150-15,e.height-l-f),g=new o(e.width-100-10,e.height-l-f),d=new o(e.width-l-f,e.height-l-f),p=new o(e.width-100-10,e.height-100-10)},this.updateLocation(),this.register=function(e){y=e},this.listen=function(){$(e).on("touchstart",t),$(e).on("click",n)};var m=!1;this.draw=function(e){e.fillStyle="rgba(0, 0, 0, 0.1)",e.fillRect(h.x,h.y,l,l),e.fillRect(d.x,d.y,l,l),e.fillRect(p.x,p.y,l,l),e.fillRect(g.x,g.y,l,l)}}function r(e,t){function n(n){var o=n.pageX-e.offsetLeft,s=n.pageY-e.offsetTop,r=i.x<=o&&o<=i.x+i.width,a=i.y<=s&&s<=i.y+i.height;r&&a&&t.reset()}this.x=10,this.y=e.height-50,this.width=100,this.height=40;var i=this;this.updateLocation=function(){this.y=e.height-50},this.listen=function(){$(e).on("click",n)},this.draw=function(e){}}function a(e,t){this.score=0,this.reset=function(){this.score=0},this.increment=function(){this.score++},this.draw=function(e){e.font="bold 36px sans-serif",e.textAlign="left",e.textBaseline="top",e.fillStyle=t.scoreColor,e.fillText(t.labels.score+": "+this.score,10,10)}}function u(e,t){this.points=[new o(f,f)],this.direction=h.RIGHT;var n=this;this.reset=function(){this.points=[new o(50,50)],this.direction=h.RIGHT},this.headCollidesWithWall=function(e){var t=this.points[0],n=0>t.x||t.x>e.width-f,i=0>t.y||t.y>e.height-f;return n||i},this.headCollidesWithSelf=function(){var e=this.points[0];for(i=1;i<this.points.length;i++)if(e.x===this.points[i].x&&e.y===this.points[i].y)return!0;return!1},this.headCollidesWithApple=function(e){var t=this.points[0];return t.x===e.x&&t.y===e.y},this.turnLeft=function(){(1===n.points.length||n.points[1].x===n.points[0].x)&&(n.direction=h.LEFT)},this.turnRight=function(){(1===n.points.length||n.points[1].x===n.points[0].x)&&(n.direction=h.RIGHT)},this.turnUp=function(){(1===n.points.length||n.points[1].y===n.points[0].y)&&(n.direction=h.UP)},this.turnDown=function(){(1===n.points.length||n.points[1].y===n.points[0].y)&&(n.direction=h.DOWN)};var s={37:this.turnLeft,38:this.turnUp,39:this.turnRight,40:this.turnDown};this.listenForKeyPress=function(e){$(document).on("keydown",$(e),function(e){var t=e.keyCode;t>=37&&40>=t&&(e.preventDefault(),s[t]())})},this.draw=function(e){for(i=0;i<this.points.length;i++)0===i?e.fillStyle=t.snakeHeadColor:e.fillStyle=t.snakeTailColor,e.fillRect(this.points[i].x,this.points[i].y,f,f)}}function c(e,t){function n(){var t=Math.random()*(e.width-f);return Math.round(t/f)*f}function i(){var t=Math.random()*(e.height-f);return Math.round(t/f)*f}this.x=n(),this.y=i(),this.move=function(){this.x=n(),this.y=i()},this.draw=function(e){e.fillStyle=t.appleColor,e.fillRect(this.x,this.y,f,f)}}function l(e,t){function n(){var t=Date.now();if(t-w>50){if(w=t,d.headCollidesWithApple(p)){var n=d.points[d.points.length-1];d.points.push(new o(n.x,n.y)),y.increment(),jQuery(e).trigger("snake.game.score.update",[y.score]),p.move()}for(i=d.points.length-1;i>0;i--)d.points[i].x=d.points[i-1].x,d.points[i].y=d.points[i-1].y;d.direction===h.LEFT?d.points[0].x-=f:d.direction===h.RIGHT?d.points[0].x+=f:d.direction===h.UP?d.points[0].y-=f:d.points[0].y+=f,(d.headCollidesWithWall(e)||d.headCollidesWithSelf())&&(jQuery(e).trigger("snake.game.collide",[y.score]),x=!0)}}function l(){v.clearRect(0,0,e.width,e.height),d.draw(v),p.draw(v),y.draw(v),g.draw(v),null!==m&&m.draw(v),jQuery(e).trigger("snake.game.ready",[b])}var d=new u(e,t),p=new c(e,t),g=new r(e,this),y=new a(e,t),m=null,v=e.getContext("2d"),w=Date.now(),x=!1,b=this;this.moveApple=function(){p.move()},this.resize=function(){var t=p.x>e.width-f,n=p.y>e.height-f;(t||n)&&p.move(),g.updateLocation(),null!==m&&m.updateLocation(),jQuery(e).trigger("snake.game.resize",[b]),l()},this.reset=function(){jQuery(e).trigger("snake.game.reset",[b]),x=!1,w=Date.now(),d.reset(),p.move(),y.reset()},this.pause=function(){x=!0},this["continue"]=function(){x=!1},this.enableControls=function(){m=new s(e),m.register(d),jQuery(e).trigger("snake.game.enable.controls",[b])},this.play=function(){function t(){x||(n(),l())}if(g.listen(),d.listenForKeyPress(e),null!==m&&m.listen(),jQuery(e).trigger("snake.game.play",[b,x]),null!==window.requestAnimationFrame){var i=function(){t(),window.requestAnimationFrame(i)};window.requestAnimationFrame(i)}else setInterval(t,1e3/60)}}const f=10;var h={LEFT:0,RIGHT:1,UP:2,DOWN:3};!function(e,n,i,o){"use strict";function s(t,n){this.element=t,this.$element=e(t),this.settings=e.extend({},a,n),this._defaults=a,this._name=r,this.init()}var r="snake",a={snakeHeadColor:"rgb(0,0,0)",snakeTailColor:"rgb(115,115,115)",appleColor:"rgb(255,0,0)",scoreColor:"rgb(200,200,200)",responsive:!0,ratio:"16:9",labels:{score:"Score",reset:"Reset"}};e.extend(s.prototype,{init:function(){this.game=new l(this.element,this.settings),this.settings.responsive&&(this.resize(),e(n).on("resize",this.resize)),this.listen()},listen:function(){var t=this;this.$element.on("snake.play",function(){t.game.play()}),this.$element.on("snake.reset",function(){t.game.reset()}),this.$element.on("snake.pause",function(){t.game.pause()}),this.$element.on("snake.enable.controls",function(){t.game.enableControls()}),this.$element.on("snake.continue",function(){t.game["continue"]()}),this.$element.on("snake.resize",function(){t.game.resize()}),this.$element.on("snake.move.apple",function(){t.game.moveApple()}),e(n).focus(function(){t.game["continue"]()}),e(n).blur(function(){t.game.pause()})},resize:function(){var e=this.settings.ratio.split(":"),t=this.$element.parent().width(),n=t*e[1]/e[0];this.element.style.width=t+"px",this.element.style.height=n+"px",this.element.width=t,this.element.height=n,this.game.resize()}}),e.fn[r]=function(t){return this.each(function(){e.data(this,"plugin_"+r)||e.data(this,"plugin_"+r,new s(this,t))})},"undefined"!=typeof t&&t.exports&&(t.exports=s)}(jQuery,window,document)},{}],8:[function(e,t,n){var i=e("./lib/Modernizr"),o=e("./lib/ModernizrProto"),s=e("./lib/classes"),r=e("./lib/testRunner"),a=e("./lib/setClasses");r(),a(s),delete o.addTest,delete o.addAsyncTest;for(var u=0;u<i._q.length;u++)i._q[u]();t.exports=i},{"./lib/Modernizr":9,"./lib/ModernizrProto":10,"./lib/classes":11,"./lib/setClasses":15,"./lib/testRunner":16}],9:[function(e,t,n){var i=e("./ModernizrProto.js"),o=function(){};o.prototype=i,o=new o,t.exports=o},{"./ModernizrProto.js":10}],10:[function(e,t,n){var i=e("./tests.js"),o={_version:"3.2.0 (browsernizr 2.0.1)",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var n=this;setTimeout(function(){t(n[e])},0)},addTest:function(e,t,n){i.push({name:e,fn:t,options:n})},addAsyncTest:function(e){i.push({name:null,fn:e})}};t.exports=o},{"./tests.js":17}],11:[function(e,t,n){var i=[];t.exports=i},{}],12:[function(e,t,n){var i=document.documentElement;t.exports=i},{}],13:[function(e,t,n){function i(e,t){return typeof e===t}t.exports=i},{}],14:[function(e,t,n){var i=e("./docElement.js"),o="svg"===i.nodeName.toLowerCase();t.exports=o},{"./docElement.js":12}],15:[function(e,t,n){function i(e){var t=s.className,n=o._config.classPrefix||"";if(r&&(t=t.baseVal),o._config.enableJSClass){var i=new RegExp("(^|\\s)"+n+"no-js(\\s|$)");t=t.replace(i,"$1"+n+"js$2")}o._config.enableClasses&&(t+=" "+n+e.join(" "+n),r?s.className.baseVal=t:s.className=t)}var o=e("./Modernizr.js"),s=e("./docElement.js"),r=e("./isSVG.js");t.exports=i},{"./Modernizr.js":9,"./docElement.js":12,"./isSVG.js":14}],16:[function(e,t,n){function i(){var e,t,n,i,u,c,l;for(var f in o)if(o.hasOwnProperty(f)){if(e=[],t=o[f],t.name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(n=0;n<t.options.aliases.length;n++)e.push(t.options.aliases[n].toLowerCase());for(i=a(t.fn,"function")?t.fn():t.fn,u=0;u<e.length;u++)c=e[u],l=c.split("."),1===l.length?s[l[0]]=i:(!s[l[0]]||s[l[0]]instanceof Boolean||(s[l[0]]=new Boolean(s[l[0]])),s[l[0]][l[1]]=i),r.push((i?"":"no-")+l.join("-"))}}var o=e("./tests.js"),s=e("./Modernizr.js"),r=e("./classes.js"),a=e("./is.js");t.exports=i},{"./Modernizr.js":9,"./classes.js":11,"./is.js":13,"./tests.js":17}],17:[function(e,t,n){var i=[];t.exports=i},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// Generated by CoffeeScript 1.10.0
+(function() {
+  var DomRouter, routes;
+
+  DomRouter = require("./../../bower_components/jquery-dom-router/src/jquery.dom-router.js");
+
+  routes = require('./plugins/routes');
+
+  new DomRouter(document, routes);
+
+}).call(this);
+
+
+},{"./../../bower_components/jquery-dom-router/src/jquery.dom-router.js":6,"./plugins/routes":4}],2:[function(require,module,exports){
+// Generated by CoffeeScript 1.10.0
+(function() {
+  var Ajax, jQ;
+
+  jQ = jQuery;
+
+
+  /**
+   * Ajax Request Class
+   */
+
+  Ajax = (function() {
+
+    /**
+    	 * Create a new Ajax handler
+    	 * @param  {String} @action   The action to listen for
+    	 * @param  {Function} @callback The function to run when success
+    	 * @param  {Object} @data     Data to pass to the action
+    	 * @param  {String} @method   Method to use for the request
+    	 * @return {Void}
+     */
+    function Ajax(action, callback, data1, method) {
+      this.action = action;
+      this.callback = callback;
+      this.data = data1;
+      this.method = method;
+      this.setup();
+    }
+
+
+    /**
+    	 * Set up the ajax request
+     */
+
+    Ajax.prototype.setup = function() {
+      var data;
+      data = this.data || {};
+      data = jQ.extend(data, {
+        action: this.action
+      });
+      return jQ.ajax({
+        url: App.ajax,
+        type: this.method || 'GET',
+        data: data,
+        success: this.callback,
+        error: function(err) {
+          return console.log(err);
+        }
+      });
+    };
+
+    return Ajax;
+
+  })();
+
+
+  /**
+   * Export the class a module
+   * @type {Object}
+   */
+
+  module.exports = Ajax;
+
+}).call(this);
+
+
+},{}],3:[function(require,module,exports){
+// Generated by CoffeeScript 1.10.0
+(function() {
+  var jQ;
+
+  jQ = jQuery;
+
+  module.exports = {
+    $body: jQ('body'),
+    $content: jQ('div[role="document"]'),
+    $trigger: jQ('[data-navigation-trigger]'),
+    $inner: jQ('[data-navigation-container]'),
+    bodyActiveClass: 'nav-open',
+    toggle: function() {
+      if (!this._hasBodyClass()) {
+        return this.open();
+      } else {
+        return this.close();
+      }
+    },
+    open: function() {
+      this._addBodyClass();
+      return this.$body.trigger('navigation.opened');
+    },
+    close: function() {
+      this._removeBodyClass();
+      return this.$body.trigger('navigation.closed');
+    },
+    _hasBodyClass: function() {
+      return this.$body.hasClass(this.bodyActiveClass);
+    },
+    _addBodyClass: function() {
+      if (!this._hasBodyClass()) {
+        this.$body.addClass(this.bodyActiveClass);
+      }
+      return this.$body.trigger('navigation.class.added');
+    },
+    _removeBodyClass: function() {
+      if (this._hasBodyClass()) {
+        this.$body.removeClass(this.bodyActiveClass);
+      }
+      return this.$body.trigger('navigation.class.removed');
+    },
+    bind: function() {
+      var self;
+      self = this;
+      self.$trigger.on('click', function() {
+        return self.toggle();
+      });
+      self.$inner.find('li a').last().on('keydown', function(e) {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          self.close();
+          return self.$content.find('a').first().focus();
+        }
+      });
+      self.$inner.find('li a').first().on('focus', function(e) {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          return self.open();
+        }
+      });
+      return self.$body.trigger('navigation.binded');
+    }
+  };
+
+}).call(this);
+
+
+},{}],4:[function(require,module,exports){
+// Generated by CoffeeScript 1.10.0
+(function() {
+  var Ajax, jQ, menu, snake;
+
+  jQ = jQuery;
+
+  menu = require('../plugins/navigation');
+
+  snake = require('../plugins/snake');
+
+  Ajax = require('../classes/Ajax');
+
+  module.exports = {
+    common: function() {
+      return menu.bind();
+    },
+    home: function() {
+      return new Ajax('my_cool_action', (function(response) {
+        return console.log(response);
+      }), {
+        cool_parameter_from_request: 'You are cool!'
+      });
+    },
+    page: function() {
+      return console.log("Page");
+    },
+    error404: function() {
+      return snake.bind();
+    }
+  };
+
+}).call(this);
+
+
+},{"../classes/Ajax":2,"../plugins/navigation":3,"../plugins/snake":5}],5:[function(require,module,exports){
+// Generated by CoffeeScript 1.10.0
+(function() {
+  var Modernizr, Snake, jQ;
+
+  jQ = jQuery;
+
+  Snake = require("./../../../bower_components/jquery-snake/dist/jquery.snake.js");
+
+  Modernizr = require('browsernizr');
+
+  module.exports = {
+    bind: function() {
+      var $canvas, $container, apple, canvas, game, score, snakeHead, snakeTail;
+      $container = jQ('.snake-container');
+      $canvas = $container.find('.snake-canvas');
+      canvas = $canvas.get(0);
+      apple = $container.find('.snake-color.apple').css('color');
+      snakeHead = $container.find('.snake-color.snake-head').css('color');
+      snakeTail = $container.find('.snake-color.snake-tail').css('color');
+      score = $container.find('.snake-color.score').css('color');
+      game = new Snake(canvas, {
+        snakeHeadColor: snakeHead,
+        snakeTailColor: snakeTail,
+        appleColor: apple,
+        scoreColor: score
+      });
+      if (Modernizr.touch) {
+        $canvas.trigger('snake.enable.controls');
+      }
+      $canvas.on('snake.game.collide', function() {
+        $container.find('.snake-crash').fadeIn();
+        return $canvas.addClass('snake-crashed');
+      });
+      $canvas.on('snake.game.play', function(event, snake, gameOver) {
+        $canvas.trigger('snake.reset');
+        $canvas.removeClass('snake-crashed');
+        return $canvas.addClass('snake-playing');
+      });
+      return jQ('.snake-play').on('click', function(e) {
+        e.preventDefault();
+        return $(this).parent().fadeOut(function() {
+          canvas.focus();
+          return $canvas.trigger('snake.play');
+        });
+      });
+    }
+  };
+
+}).call(this);
+
+
+},{"./../../../bower_components/jquery-snake/dist/jquery.snake.js":7,"browsernizr":8}],6:[function(require,module,exports){
+;(function ( $ ) {
+
+    if(!$.fn.watch && !$.fn.unwatch) {
+
+    	/**
+    	 * Watches an element for a change in a property
+    	 * @param  {string}   id The property to watch
+    	 * @param  {Function} fn The function to execute when something has changed
+    	 */
+	    $.fn.watch = function( id, fn ) {
+
+		    return this.each(function(){
+
+		        var self = this;
+
+		        var oldVal = self[id];
+		        $(self).data(
+		            'watch_timer',
+		            setInterval(function(){
+		                if (self[id] !== oldVal) {
+		                    fn.call(self, id, oldVal, self[id]);
+		                    oldVal = self[id];
+		                }
+		            }, 100)
+		        );
+
+		    });
+		};
+
+		/**
+		 * Unwatches an element
+		 */
+		$.fn.unwatch = function() {
+
+		    return this.each(function(){
+		        clearInterval( $(this).data('watch_timer') );
+		    });
+
+		};
+
+	}
+
+    if (!$.DOMRouter) {
+        $.DOMRouter = {
+        	router: function(el, routes) {
+		        var base = this;
+		        base.$el = $(el);
+		        base.el = el;
+		        base.$el.data( 'DOMRouter.router' , base );
+
+		        base.element = base.$el.find($.DOMRouter.defaults.element);
+
+		        base.element.addClass('dom-router-ready');
+
+		        /**
+		         * Initalize the functions
+		         * @return {void}
+		         */
+		        base.init = function () {
+		            base.routes = routes;
+		            $(document).ready(base.load);
+
+		            base.executed = [];
+
+		            base.element.watch('className', function(property, oldClasses, newClasses) {
+		            	var classes = newClasses.replace(/-/g, '_').split(/\s+/);
+
+		            	$.each(classes, function(i, className) {
+		            		if(!base.routeExecuted(className)) {
+		            			base.fire(className);
+            					base.executed.push(className);
+		            		}
+		            	});
+		            });
+		        };
+
+		        /**
+		         * Checks if a route has been executed already
+		         * @param  {string} 	route        [description]
+		         * @return {boolean}
+		         */
+		        base.routeExecuted = function(route) {
+		        	return base.executed.indexOf(route) > -1;
+		        };
+
+		        /**
+		         * Gets the classes on the body element
+		         * @return {array}
+		         */
+		        base.classes = function() {
+		        	return base.element.get(0).className.replace(/-/g, '_').split(/\s+/);
+		        };
+
+		        /**
+		         * Load all events to be fired
+		         * @return {void}
+		         */
+	        	base.load = function() {
+	        		base.fire('common');
+	        		$.each(base.classes(), function(i, className) {
+	        			base.fire(className);
+            			base.executed.push(className);
+	        		});
+	        	};
+
+	        	/**
+	        	 * Fire an event
+	        	 * @param  {Function} func The function to be fired
+	        	 * @param  {Array} args Arguments
+	        	 * @return {Void}
+	        	 */
+	        	base.fire = function(func, args) {
+	        		var fire,
+	        			routes = base.routes;
+
+	        		fire = func !== '';
+	        		fire = fire && routes[func];
+      				fire = fire && typeof routes[func] === 'function';
+
+      				if(fire) {
+	      				routes[func](args);
+	      			}
+	        	};
+
+		        // Run initializer
+		        base.init();
+
+        	},
+        	defaults: {
+        		element: 'body'
+        	}
+        };
+    }
+
+    $.fn.router = function( routes ) {
+        return this.each(function () {
+            (new $.DOMRouter.router(this, routes));
+        });
+    };
+
+    if(typeof module !== 'undefined' && module.exports) {
+		module.exports = $.DOMRouter.router;
+	}
+
+})( jQuery );
+
+},{}],7:[function(require,module,exports){
+/*
+ *  jquery-snake - v3.6.0
+ *  A jQuery plugin for the Snake game.
+ *  http://jqueryboilerplate.com
+ *
+ *  Made by Tor Morten Jensen
+ *  Under MIT License
+ */
+const BLOCK_SIZE = 10;
+
+var Direction = {
+	LEFT: 0,
+	RIGHT: 1,
+	UP: 2,
+	DOWN: 3
+};
+
+function Point(x, y) {
+	this.x = x;
+	this.y = y;
+}
+
+function Controls(canvas) {
+	const SIZE = 50;
+	const GAP = 5;
+
+	var left, right, up, down;
+
+	var listener = null;
+
+	this.updateLocation = function() {
+		left  = new Point(canvas.width - SIZE * 3 - GAP * 3,
+											canvas.height - SIZE - GAP);
+		down  = new Point(canvas.width - SIZE * 2 - GAP * 2,
+											canvas.height - SIZE - GAP);
+		right = new Point(canvas.width - SIZE - GAP,
+											canvas.height - SIZE - GAP);
+		up    = new Point(canvas.width - SIZE * 2 - GAP * 2,
+											canvas.height - SIZE * 2 - GAP * 2);
+	};
+	this.updateLocation();
+
+	this.register = function(newListener) {
+		listener = newListener;
+	};
+
+	this.listen = function() {
+		$(canvas).on('touchstart', checkForTouch);
+		$(canvas).on('click', checkForClick);
+	};
+
+	var touched = false;
+	function checkForTouch(e) {
+		touched = true;
+
+		var eventX = e.touches[0].pageX - canvas.offsetLeft;
+		var eventY = e.touches[0].pageY - canvas.offsetTop;
+
+		checkForCollision(eventX, eventY);
+	}
+
+	function checkForClick(e) {
+		console.log(canvas);
+		if (touched) { return; }
+
+		var eventX = e.pageX - canvas.offsetLeft;
+		var eventY = e.pageY - canvas.offsetTop;
+
+		return checkForCollision(eventX, eventY);
+	}
+
+	function checkForCollision(eventX, eventY) {
+		if (collidesWithLeft(eventX, eventY)) {
+			listener.turnLeft();
+		} else if (collidesWithRight(eventX, eventY)) {
+			listener.turnRight();
+		} else if (collidesWithUp(eventX, eventY)) {
+			listener.turnUp();
+		} else if (collidesWithDown(eventX, eventY)) {
+			listener.turnDown();
+		}
+	}
+
+	function collidesWithLeft(x, y) {
+		return collidesWithControl(left, x, y);
+	}
+
+	function collidesWithRight(x, y) {
+		return collidesWithControl(right, x, y);
+	}
+
+	function collidesWithUp(x, y) {
+		return collidesWithControl(up, x, y);
+	}
+
+	function collidesWithDown(x, y) {
+		return collidesWithControl(down, x, y);
+	}
+
+	function collidesWithControl(control, x, y) {
+		var xCollides = control.x <= x && x <= control.x + SIZE;
+		var yCollides = control.y <= y && y <= control.y + SIZE;
+		return xCollides && yCollides;
+	}
+
+	this.draw = function(context) {
+		context.fillStyle = 'rgba(0, 0, 0, 0.1)';
+
+		context.fillRect(left.x, left.y, SIZE, SIZE);
+		context.fillRect(right.x, right.y, SIZE, SIZE);
+		context.fillRect(up.x, up.y, SIZE, SIZE);
+		context.fillRect(down.x, down.y, SIZE, SIZE);
+	};
+}
+
+function ResetButton(canvas, game) {
+	this.x = 10;
+	this.y = canvas.height - 50;
+	this.width = 100;
+	this.height = 40;
+
+	var btn = this;
+
+	this.updateLocation = function() {
+		this.y = canvas.height - 50;
+	};
+
+	this.listen = function() {
+		$(canvas).on('click', checkForClick);
+	};
+
+	function checkForClick(e) {
+		var eventX = e.pageX - canvas.offsetLeft;
+		var eventY = e.pageY - canvas.offsetTop;
+
+		var xCollides = btn.x <= eventX && eventX <= btn.x + btn.width;
+		var yCollides = btn.y <= eventY && eventY <= btn.y + btn.height;
+
+		if (xCollides && yCollides) {
+			game.reset();
+		}
+	}
+
+	this.draw = function(context) {
+
+		// context.fillRect(this.x, this.y, this.width, this.height);
+
+		// context.font = '16px sans-serif';
+		// context.textAlign = 'center';
+		// context.textBaseline = 'middle';
+		// context.fillStyle = '#333';
+
+		// var centerX = this.x + (this.width / 2);
+		// var centerY = this.y + (this.height / 2);
+		// context.fillText(options.labels.reset, centerX, centerY);
+	};
+}
+
+function Score(canvas, options) {
+	this.score = 0;
+
+	this.reset = function() {
+		this.score = 0;
+	};
+
+	this.increment = function() {
+		this.score++;
+	};
+
+	this.draw = function(context) {
+		context.font = 'bold 36px sans-serif';
+		context.textAlign = 'left';
+		context.textBaseline = 'top';
+		context.fillStyle = options.scoreColor;
+		context.fillText(options.labels.score + ': ' + this.score, 10, 10);
+	};
+}
+
+function Snake(canvas, options) {
+	this.points = [new Point(BLOCK_SIZE, BLOCK_SIZE)];
+	this.direction = Direction.RIGHT;
+
+	var snake = this;
+
+	this.reset = function() {
+		this.points = [new Point(50, 50)];
+		this.direction = Direction.RIGHT;
+	};
+
+	this.headCollidesWithWall = function(canvas) {
+		var head = this.points[0];
+		var xCollides = 0 > head.x || head.x > canvas.width - BLOCK_SIZE;
+		var yCollides = 0 > head.y || head.y > canvas.height - BLOCK_SIZE;
+		return xCollides || yCollides;
+	};
+
+	this.headCollidesWithSelf = function() {
+		var head = this.points[0];
+		for (i = 1; i < this.points.length; i++) {
+			if (head.x === this.points[i].x && head.y === this.points[i].y) {
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	this.headCollidesWithApple = function(apple){
+		var head = this.points[0];
+		return head.x === apple.x && head.y === apple.y;
+	};
+
+	this.turnLeft = function() {
+		if (snake.points.length === 1 || snake.points[1].x === snake.points[0].x) {
+			snake.direction = Direction.LEFT;
+		}
+	};
+
+	this.turnRight = function() {
+		if (snake.points.length === 1 || snake.points[1].x === snake.points[0].x) {
+			snake.direction = Direction.RIGHT;
+		}
+	};
+
+	this.turnUp = function() {
+		if (snake.points.length === 1 || snake.points[1].y === snake.points[0].y) {
+			snake.direction = Direction.UP;
+		}
+	};
+
+	this.turnDown = function() {
+		if (snake.points.length === 1 || snake.points[1].y === snake.points[0].y) {
+			snake.direction = Direction.DOWN;
+		}
+	};
+
+	var keyMap = {
+		'37': this.turnLeft,
+		'38': this.turnUp,
+		'39': this.turnRight,
+		'40': this.turnDown
+	};
+
+	this.listenForKeyPress = function(canvas) {
+		$(document).on('keydown', $(canvas), function(e) {
+			var code = e.keyCode;
+			if (37 <= code && code <= 40) {
+				e.preventDefault();
+				keyMap[code]();
+			}
+		});
+	};
+
+	this.draw = function(context) {
+
+		for (i = 0; i < this.points.length; i++) {
+			if(i === 0) {
+				context.fillStyle = options.snakeHeadColor;
+			}
+			else {
+				context.fillStyle = options.snakeTailColor;
+			}
+			context.fillRect(this.points[i].x, this.points[i].y, BLOCK_SIZE, BLOCK_SIZE);
+		}
+	};
+}
+
+function Apple(canvas, options) {
+
+	function generateX() {
+		var x = Math.random() * (canvas.width - BLOCK_SIZE);
+		return Math.round(x / BLOCK_SIZE) * BLOCK_SIZE;
+	}
+
+	function generateY() {
+		var y = Math.random() * (canvas.height - BLOCK_SIZE);
+		return Math.round(y / BLOCK_SIZE) * BLOCK_SIZE;
+	}
+
+	this.x = generateX();
+	this.y = generateY();
+
+	this.move = function() {
+		this.x = generateX();
+		this.y = generateY();
+	};
+
+	this.draw = function(context) {
+		context.fillStyle = options.appleColor;
+		context.fillRect(this.x, this.y, BLOCK_SIZE, BLOCK_SIZE);
+	};
+}
+
+function SnakeGame(canvas, options) {
+	var snake = new Snake(canvas, options);
+	var apple = new Apple(canvas, options);
+	var btnReset = new ResetButton(canvas, this);
+	var score = new Score(canvas, options);
+	var controls = null;
+
+	var context = canvas.getContext('2d');
+
+	var time = Date.now();
+	var gameOver = false;
+
+	var game = this;
+
+	this.moveApple = function() {
+		apple.move();
+	};
+
+	this.resize = function() {
+		var appleOutsideX = apple.x > canvas.width - BLOCK_SIZE;
+		var appleOutsideY = apple.y > canvas.height - BLOCK_SIZE;
+
+		if (appleOutsideX || appleOutsideY) {
+			apple.move();
+		}
+
+		btnReset.updateLocation();
+
+		if (controls !== null) {
+			controls.updateLocation();
+		}
+		jQuery(canvas).trigger('snake.game.resize', [game]);
+		drawGame();
+	};
+
+	this.reset = function() {
+		jQuery(canvas).trigger('snake.game.reset', [game]);
+		gameOver = false;
+		time = Date.now();
+
+		snake.reset();
+		apple.move();
+		score.reset();
+	};
+
+	this.pause = function() {
+		gameOver = true;
+	};
+
+	this.continue = function() {
+		gameOver = false;
+	};
+
+	this.enableControls = function() {
+		controls = new Controls(canvas);
+		controls.register(snake);
+		jQuery(canvas).trigger('snake.game.enable.controls', [game]);
+	};
+
+	this.play = function() {
+		btnReset.listen();
+		snake.listenForKeyPress(canvas);
+
+		if (controls !== null) {
+			controls.listen();
+		}
+
+		jQuery(canvas).trigger('snake.game.play', [game, gameOver]);
+
+		// game loop
+		function mainloop() {
+			if (!gameOver) {
+				updateGame();
+				drawGame();
+			}
+		}
+
+		// game loop timing
+		if (window.requestAnimationFrame !== null) {
+			var recursiveAnim = function() {
+				mainloop();
+				window.requestAnimationFrame(recursiveAnim);
+			};
+
+			window.requestAnimationFrame(recursiveAnim);
+		} else {
+			setInterval(mainloop, 1000.0 / 60);
+		}
+	};
+
+	function updateGame() {
+		var newTime = Date.now();
+
+		if (newTime - time > 50) {
+			time = newTime;
+
+			if (snake.headCollidesWithApple(apple)) {
+				var last = snake.points[snake.points.length-1];
+				snake.points.push(new Point(last.x, last.y));
+
+				score.increment();
+				jQuery(canvas).trigger('snake.game.score.update', [score.score]);
+				apple.move();
+			}
+
+			// update all but head of snake
+			for (i = snake.points.length - 1; i > 0; i--) {
+				snake.points[i].x = snake.points[i-1].x;
+				snake.points[i].y = snake.points[i-1].y;
+			}
+
+			// update head
+			if (snake.direction === Direction.LEFT) {
+				snake.points[0].x -= BLOCK_SIZE;
+			} else if (snake.direction === Direction.RIGHT) {
+				snake.points[0].x += BLOCK_SIZE;
+			} else if (snake.direction === Direction.UP) {
+				snake.points[0].y -= BLOCK_SIZE;
+			} else {
+				snake.points[0].y += BLOCK_SIZE;
+			}
+
+			if (snake.headCollidesWithWall(canvas) || snake.headCollidesWithSelf()) {
+				jQuery(canvas).trigger('snake.game.collide', [score.score]);
+				gameOver = true;
+			}
+		}
+	}
+
+	function drawGame() {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+
+		snake.draw(context);
+
+		apple.draw(context);
+
+		score.draw(context);
+
+		btnReset.draw(context);
+
+		if (controls !== null) {
+			controls.draw(context);
+		}
+		jQuery(canvas).trigger('snake.game.ready', [game]);
+	}
+}
+
+
+;(function ( $, window, document, undefined ) {
+
+	'use strict';
+
+		var pluginName = 'snake',
+			defaults = {
+				snakeHeadColor: 'rgb(0,0,0)',
+				snakeTailColor: 'rgb(115,115,115)',
+				appleColor: 'rgb(255,0,0)',
+				scoreColor: 'rgb(200,200,200)',
+				responsive: true,
+				ratio: '16:9',
+				labels: {
+					score: 'Score',
+					reset: 'Reset'
+				}
+			};
+
+		function Plugin ( element, options ) {
+			this.element = element;
+			this.$element = $(element);
+			this.settings = $.extend( {}, defaults, options );
+			this._defaults = defaults;
+			this._name = pluginName;
+			this.init();
+		}
+
+		$.extend(Plugin.prototype, {
+			init: function () {
+				this.game = new SnakeGame(this.element, this.settings);
+
+				if(this.settings.responsive) {
+					this.resize();
+					$(window).on('resize', this.resize);
+				}
+
+				this.listen();
+			},
+			listen: function() {
+				var me = this;
+
+				this.$element.on('snake.play', function() {
+					me.game.play();
+				});
+
+				this.$element.on('snake.reset', function() {
+					me.game.reset();
+				});
+
+				this.$element.on('snake.pause', function() {
+					me.game.pause();
+				});
+
+				this.$element.on('snake.enable.controls', function() {
+					me.game.enableControls();
+				});
+
+				this.$element.on('snake.continue', function() {
+					me.game.continue();
+				});
+
+				this.$element.on('snake.resize', function() {
+					me.game.resize();
+				});
+
+				this.$element.on('snake.move.apple', function() {
+					me.game.moveApple();
+				});
+
+				$(window).focus(function() {
+					me.game.continue();
+				});
+
+				$(window).blur(function() {
+					me.game.pause();
+				});
+
+			},
+			resize: function() {
+
+				// get the aspect ratio
+				var ratio = this.settings.ratio.split(':');
+				// fetch the width of the parent element
+				var width = this.$element.parent().width();
+
+				// figure out what the height should be according to our aspect ratio
+				var height = width*ratio[1]/ratio[0];
+
+				// set these to whatever dimensions you want
+				this.element.style.width = width + 'px'; // width same as parent
+				this.element.style.height = height + 'px'; // height same as parent
+
+				// these must be set for proper drawing
+				this.element.width = width;
+				this.element.height = height;
+
+				this.game.resize();
+			}
+		});
+
+		// A really lightweight plugin wrapper around the constructor,
+		// preventing against multiple instantiations
+		$.fn[ pluginName ] = function ( options ) {
+			return this.each(function() {
+				if ( !$.data( this, 'plugin_' + pluginName ) ) {
+						$.data( this, 'plugin_' + pluginName, new Plugin( this, options ) );
+				}
+			});
+		};
+
+		if(typeof module !== 'undefined' && module.exports) {
+			module.exports = Plugin;
+		}
+
+})( jQuery, window, document );
+
+},{}],8:[function(require,module,exports){
+var Modernizr = require('./lib/Modernizr'),
+    ModernizrProto = require('./lib/ModernizrProto'),
+    classes = require('./lib/classes'),
+    testRunner = require('./lib/testRunner'),
+    setClasses = require('./lib/setClasses');
+
+// Run each test
+testRunner();
+
+// Remove the "no-js" class if it exists
+setClasses(classes);
+
+delete ModernizrProto.addTest;
+delete ModernizrProto.addAsyncTest;
+
+// Run the things that are supposed to run after the tests
+for (var i = 0; i < Modernizr._q.length; i++) {
+  Modernizr._q[i]();
+}
+
+module.exports = Modernizr;
+
+},{"./lib/Modernizr":9,"./lib/ModernizrProto":10,"./lib/classes":11,"./lib/setClasses":15,"./lib/testRunner":16}],9:[function(require,module,exports){
+var ModernizrProto = require('./ModernizrProto.js');
+  // Fake some of Object.create so we can force non test results to be non "own" properties.
+  var Modernizr = function() {};
+  Modernizr.prototype = ModernizrProto;
+
+  // Leak modernizr globally when you `require` it rather than force it here.
+  // Overwrite name so constructor name is nicer :D
+  Modernizr = new Modernizr();
+
+  module.exports = Modernizr;
+
+
+},{"./ModernizrProto.js":10}],10:[function(require,module,exports){
+var tests = require('./tests.js');
+  /**
+   *
+   * ModernizrProto is the constructor for Modernizr
+   *
+   * @class
+   * @access public
+   */
+
+  var ModernizrProto = {
+    // The current version, dummy
+    _version: '3.2.0 (browsernizr 2.0.1)',
+
+    // Any settings that don't work as separate modules
+    // can go in here as configuration.
+    _config: {
+      'classPrefix' : '',
+      'enableClasses' : true,
+      'enableJSClass' : true,
+      'usePrefixes' : true
+    },
+
+    // Queue of tests
+    _q: [],
+
+    // Stub these for people who are listening
+    on: function(test, cb) {
+      // I don't really think people should do this, but we can
+      // safe guard it a bit.
+      // -- NOTE:: this gets WAY overridden in src/addTest for actual async tests.
+      // This is in case people listen to synchronous tests. I would leave it out,
+      // but the code to *disallow* sync tests in the real version of this
+      // function is actually larger than this.
+      var self = this;
+      setTimeout(function() {
+        cb(self[test]);
+      }, 0);
+    },
+
+    addTest: function(name, fn, options) {
+      tests.push({name : name, fn : fn, options : options});
+    },
+
+    addAsyncTest: function(fn) {
+      tests.push({name : null, fn : fn});
+    }
+  };
+
+  module.exports = ModernizrProto;
+
+
+},{"./tests.js":17}],11:[function(require,module,exports){
+
+  var classes = [];
+  module.exports = classes;
+
+
+},{}],12:[function(require,module,exports){
+
+  /**
+   * docElement is a convenience wrapper to grab the root element of the document
+   *
+   * @access private
+   * @returns {HTMLElement|SVGElement} The root element of the document
+   */
+
+  var docElement = document.documentElement;
+  module.exports = docElement;
+
+
+},{}],13:[function(require,module,exports){
+
+  /**
+   * is returns a boolean if the typeof an obj is exactly type.
+   *
+   * @access private
+   * @function is
+   * @param {*} obj - A thing we want to check the type of
+   * @param {string} type - A string to compare the typeof against
+   * @returns {boolean}
+   */
+
+  function is(obj, type) {
+    return typeof obj === type;
+  }
+  module.exports = is;
+
+
+},{}],14:[function(require,module,exports){
+var docElement = require('./docElement.js');
+  /**
+   * A convenience helper to check if the document we are running in is an SVG document
+   *
+   * @access private
+   * @returns {boolean}
+   */
+
+  var isSVG = docElement.nodeName.toLowerCase() === 'svg';
+  module.exports = isSVG;
+
+
+},{"./docElement.js":12}],15:[function(require,module,exports){
+var Modernizr = require('./Modernizr.js');
+var docElement = require('./docElement.js');
+var isSVG = require('./isSVG.js');
+  /**
+   * setClasses takes an array of class names and adds them to the root element
+   *
+   * @access private
+   * @function setClasses
+   * @param {string[]} classes - Array of class names
+   */
+
+  // Pass in an and array of class names, e.g.:
+  //  ['no-webp', 'borderradius', ...]
+  function setClasses(classes) {
+    var className = docElement.className;
+    var classPrefix = Modernizr._config.classPrefix || '';
+
+    if (isSVG) {
+      className = className.baseVal;
+    }
+
+    // Change `no-js` to `js` (independently of the `enableClasses` option)
+    // Handle classPrefix on this too
+    if (Modernizr._config.enableJSClass) {
+      var reJS = new RegExp('(^|\\s)' + classPrefix + 'no-js(\\s|$)');
+      className = className.replace(reJS, '$1' + classPrefix + 'js$2');
+    }
+
+    if (Modernizr._config.enableClasses) {
+      // Add the new classes
+      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      isSVG ? docElement.className.baseVal = className : docElement.className = className;
+    }
+
+  }
+
+  module.exports = setClasses;
+
+
+},{"./Modernizr.js":9,"./docElement.js":12,"./isSVG.js":14}],16:[function(require,module,exports){
+var tests = require('./tests.js');
+var Modernizr = require('./Modernizr.js');
+var classes = require('./classes.js');
+var is = require('./is.js');
+  /**
+   * Run through all tests and detect their support in the current UA.
+   *
+   * @access private
+   */
+
+  function testRunner() {
+    var featureNames;
+    var feature;
+    var aliasIdx;
+    var result;
+    var nameIdx;
+    var featureName;
+    var featureNameSplit;
+
+    for (var featureIdx in tests) {
+      if (tests.hasOwnProperty(featureIdx)) {
+        featureNames = [];
+        feature = tests[featureIdx];
+        // run the test, throw the return value into the Modernizr,
+        // then based on that boolean, define an appropriate className
+        // and push it into an array of classes we'll join later.
+        //
+        // If there is no name, it's an 'async' test that is run,
+        // but not directly added to the object. That should
+        // be done with a post-run addTest call.
+        if (feature.name) {
+          featureNames.push(feature.name.toLowerCase());
+
+          if (feature.options && feature.options.aliases && feature.options.aliases.length) {
+            // Add all the aliases into the names list
+            for (aliasIdx = 0; aliasIdx < feature.options.aliases.length; aliasIdx++) {
+              featureNames.push(feature.options.aliases[aliasIdx].toLowerCase());
+            }
+          }
+        }
+
+        // Run the test, or use the raw value if it's not a function
+        result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
+
+
+        // Set each of the names on the Modernizr object
+        for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
+          featureName = featureNames[nameIdx];
+          // Support dot properties as sub tests. We don't do checking to make sure
+          // that the implied parent tests have been added. You must call them in
+          // order (either in the test, or make the parent test a dependency).
+          //
+          // Cap it to TWO to make the logic simple and because who needs that kind of subtesting
+          // hashtag famous last words
+          featureNameSplit = featureName.split('.');
+
+          if (featureNameSplit.length === 1) {
+            Modernizr[featureNameSplit[0]] = result;
+          } else {
+            // cast to a Boolean, if not one already
+            /* jshint -W053 */
+            if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+              Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+            }
+
+            Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+          }
+
+          classes.push((result ? '' : 'no-') + featureNameSplit.join('-'));
+        }
+      }
+    }
+  }
+  module.exports = testRunner;
+
+
+},{"./Modernizr.js":9,"./classes.js":11,"./is.js":13,"./tests.js":17}],17:[function(require,module,exports){
+
+  var tests = [];
+  module.exports = tests;
+
+
+},{}]},{},[1]);

@@ -1,14 +1,25 @@
 # Get modules
 jQ        = jQuery
 
-# Create an ajax class
+###*
+ * Ajax Request Class
+###
 class Ajax
 
-	# Construct the javascript
+	###*
+	 * Create a new Ajax handler
+	 * @param  {String} @action   The action to listen for
+	 * @param  {Function} @callback The function to run when success
+	 * @param  {Object} @data     Data to pass to the action
+	 * @param  {String} @method   Method to use for the request
+	 * @return {Void}
+	###
 	constructor: (@action, @callback,  @data, @method) ->
 		this.setup()
 
-	# Setup the ajax
+	###*
+	 * Set up the ajax request
+	###
 	setup: ->
 		data = @data || {}
 		data = jQ.extend data,
@@ -21,4 +32,8 @@ class Ajax
 			error: (err) ->
 				console.log err
 
+###*
+ * Export the class a module
+ * @type {Object}
+###
 module.exports = Ajax

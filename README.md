@@ -88,6 +88,18 @@ In the themes gulpfile there are several tasks defined for a great workflow.
 
 When developing source maps are created, and the output will not be minified (`styles` and `scripts`). To create a production-ready file, simply add the `--production` argument when running gulp (`gulp --production`)
 
+## Naming Conventions
+
+All functions in AnunaTheme are named by Sage's naming conventions. Meaning that they are namespaced.
+
+### Renaming to your theme
+
+To use your own theme name instead, do the following search and replace in all files from the root of your project.
+
+1. Namespaces: Search for `AnunaTheme\` (case sensitive) and replace with `YourNamespace\`
+2. Text-Domains: Search for `'anunatheme'` (case sensitive) and replace with `'your-textdomain'`
+3. Theme Name: Search for `AnunaTheme` (case sensitive) and replace with `Your Theme Name`
+
 ## Getting Started
 
 1. Install Composer dependencies: `composer install`
