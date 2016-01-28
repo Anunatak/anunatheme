@@ -8,6 +8,7 @@ var livereload = require('gulp-livereload');
 var concat     = require('gulp-concat');
 var gutil      = require('gulp-util');
 var notify     = require('gulp-notify');
+var plumber    = require('gulp-plumber');
 
 // Scripts Modules
 var source = require('vinyl-source-stream');

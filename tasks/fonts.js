@@ -4,6 +4,7 @@ var copy       = require('gulp-copy');
 var notify     = require('gulp-notify');
 var fontmin    = require('gulp-fontmin');
 var livereload = require('gulp-livereload');
+var plumber    = require('gulp-plumber');
 
 // Configuration
 var fs = require('fs');
@@ -15,7 +16,9 @@ gulp.task('fonts', function() {
     var dest_dir = config.dest_dir + config.fonts.dest_dir;
 
 	return gulp.src(source_dir + '**/*.ttf')
+		.pipe( plumber() )
         .pipe( fontmin() )
+    	.pipe( plumber.stop() )
         .pipe( gulp.dest(dest_dir) )
         .pipe( livereload() )
         .pipe( notify('AnunaTheme: Copied fonts.') );

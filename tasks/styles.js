@@ -6,6 +6,7 @@ var gulpif     = require('gulp-if');
 var argv       = require('minimist')(process.argv.slice(2));
 var livereload = require('gulp-livereload');
 var notify     = require('gulp-notify');
+var plumber    = require('gulp-plumber');
 
 // CSS Modules
 var sass       = require('gulp-sass');
@@ -30,6 +31,7 @@ gulp.task('styles', function () {
     var dest_dir = config.dest_dir + config.styles.dest_dir;
 
     return gulp.src(source_dir + 'main' + config.styles.extension)
+		.pipe( plumber() )
         .pipe( gulpif( enabled.maps, sourcemaps.init() ) )
         .pipe( sass().on('error', sass.logError) )
         .pipe( autoprefixer({
@@ -39,6 +41,7 @@ gulp.task('styles', function () {
         .pipe( rename('main.css') )
         .pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
         .pipe( gulpif( enabled.minify, cssnano() ) )
+    	.pipe( plumber.stop() )
         .pipe( gulp.dest(dest_dir) )
         .pipe( livereload() )
         .pipe( notify('AnunaTheme: Styles compiled'+ (argv.production ? ' for production' : '') +'.') );

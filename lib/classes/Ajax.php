@@ -38,7 +38,7 @@ class Ajax {
 	 * @param string   $action   Name of your custom action
 	 * @param \Closure $callback A valid closure to use
 	 */
-	public function create($action, \Closure $callback) {
+	public static function create($action, \Closure $callback) {
 		return new static($action, $callback);
 	}
 
