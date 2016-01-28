@@ -12,7 +12,8 @@
     "bourbon": "4.2.6",
     "components-modernizr": "2.8.3",
     "jquery-snake": "master",
-    "font-awesome": "~4.5.0"
+    "font-awesome": "~4.5.0",
+    "concise": "~3.3.0"
   },
   "overrides": {
     "bourbon": {
