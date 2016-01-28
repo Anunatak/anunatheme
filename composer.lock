@@ -543,12 +543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tormjens/wp-blade.git",
-                "reference": "f7ccf3f3887628cb24bc07eade22d868b08230b5"
+                "reference": "2ac2d531269045ed28034724ceec94a22dddc275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/f7ccf3f3887628cb24bc07eade22d868b08230b5",
-                "reference": "f7ccf3f3887628cb24bc07eade22d868b08230b5",
+                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/2ac2d531269045ed28034724ceec94a22dddc275",
+                "reference": "2ac2d531269045ed28034724ceec94a22dddc275",
                 "shasum": ""
             },
             "require": {
@@ -571,7 +571,7 @@
                 }
             ],
             "description": "Use Blade templates in your WordPress theme",
-            "time": "2016-01-13 15:23:39"
+            "time": "2016-01-13 15:30:44"
         }
     ],
     "packages-dev": [],
