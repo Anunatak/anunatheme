@@ -1,6 +1,7 @@
 {
     "name": "anunatak/anunatheme",
     "license": "MIT",
+    "type": "wordpress-theme",
     "authors": [
         {
             "name": "Tor Morten Jensen",
