@@ -6,6 +6,8 @@ $nav-container-spacing: 	80;
 $nav-container-position:	right;
 $nav-container-duration:  	.5s;
 $nav-container-easing:  	ease;
+$nav-body-move:             'yes';
+$nav-body-duration:  	    .6s;
 
 // Nav Container: Position Mixin
 @mixin nav-position {
@@ -31,6 +33,32 @@ $nav-container-easing:  	ease;
 		}
 	}
 
+}
+
+// Nav Container: Body Adjument
+@mixin nav-body {
+	@if($nav-body-move == 'yes') {
+		position: relative;
+		z-index: 700;
+		@include transition( $nav-container-position $nav-body-duration $nav-container-easing );
+		@if($nav-container-position == left) {
+			left: 0;
+			&.nav-open {
+				left: rem-calc(0 - $nav-container-width);
+			}
+		}
+		@else if($nav-container-position == right) {
+			right: 0;
+			&.nav-open {
+				right: rem-calc($nav-container-width);
+			}
+		}
+	}
+}
+
+body {
+	overflow-x: hidden;
+	@include nav-body;
 }
 
 // Nav Container: Styles
@@ -160,11 +188,6 @@ button.nav-trigger {
 	perspective: 900000px;
 	span.nav-lines {
 		@include nav-lines;
-	}
-	&:focus {
-		span.nav-lines {
-			@include nav-lines-focus;
-		}
 	}
 	.nav-open & {
 		span.nav-lines {
