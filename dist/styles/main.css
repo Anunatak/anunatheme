@@ -4211,6 +4211,49 @@ body {
   body.nav-open {
     height: 100%; }
 
+h1 {
+  font-size: 4.22222em;
+  line-height: 1.34211em;
+  margin-bottom: 0.44737em;
+  margin-top: 0.89474em; }
+
+h2 {
+  font-size: 47px;
+  line-height: 68px;
+  margin-bottom: 34px;
+  margin-top: 68px; }
+
+h3 {
+  font-size: 29px;
+  line-height: 34px;
+  margin-bottom: 34px;
+  margin-top: 34px;
+  font-size: 1.8125rem;
+  line-height: 2.125rem;
+  margin-bottom: 2.125rem;
+  margin-top: 2.125rem; }
+
+h4 {
+  font-size: 18px;
+  line-height: 34px;
+  margin-bottom: 34px;
+  margin-top: 34px;
+  font-size: 1.125rem;
+  line-height: 2.125rem;
+  margin-bottom: 2.125rem;
+  margin-top: 2.125rem; }
+
+p, ul, ol, pre, table, blockquote {
+  font-size: 1.125rem;
+  line-height: 2.125rem;
+  margin-bottom: 34px;
+  margin-top: 34px;
+  margin-bottom: 2.125rem;
+  margin-top: 2.125rem; }
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-top: 0; }
+
 /*
 	Fixes overlapping admin bar
  */
@@ -4227,6 +4270,25 @@ html {
 body {
   -webkit-backface-visibility: hidden; }
 
+.gallery {
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem; }
+  .gallery::before, .gallery::after {
+    content: ' ';
+    display: table; }
+  .gallery::after {
+    clear: both; }
+  .gallery .gallery-item {
+    margin: 0;
+    width: 16.66667%;
+    float: left;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem; }
+    .gallery .gallery-item:last-child:not(:first-child) {
+      float: right; }
+    .gallery .gallery-item .gallery-icon img {
+      width: 100%; }
+
 .main {
   width: 100%;
   float: left;
@@ -4234,6 +4296,13 @@ body {
   padding-right: 0.9375rem; }
   .main:last-child:not(:first-child) {
     float: right; }
+
+.thumbnail, .wp-caption {
+  line-height: 1.9; }
+
+.wp-caption {
+  margin-left: 0;
+  margin-right: 0; }
 
 .alignnone {
   margin-left: 0;

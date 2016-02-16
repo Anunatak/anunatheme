@@ -1,0 +1,30 @@
+$sgl-base-font-size: 18;
+$sgl-base-line-height: 1.9;
+
+@import "../../bower_components/sassy-gridlover/sassy-gridlover/_sassy-gridlover.scss";
+
+h1 {
+    @include sassy-gridlover-heading(3, "em");
+}
+
+h2 {
+    @include sassy-gridlover-heading(2, "px");
+}
+
+h3 {
+    @include sassy-gridlover-heading(1, "pxrem");
+}
+
+h4 {
+    @include sassy-gridlover-heading(0);
+}
+
+p, ul, ol, pre, table, blockquote {
+	@include sassy-gridlover-body($sgl-base-font-size, "rem");
+    @include sassy-gridlover-margins();
+}
+ul, ol {
+	ul, ol {
+		margin-top: 0;
+	}
+}

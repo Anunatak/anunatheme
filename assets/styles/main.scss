@@ -14,11 +14,13 @@
 
 // Common styles
 @import "common/_global";
+@import "common/_typography";
 @import "common/_fixes";
 
 // Components
 @import "components/_buttons";
 @import "components/_comments";
+@import "components/_gallery";
 @import "components/_forms";
 @import "components/_grid";
 @import "components/_wp-classes";
