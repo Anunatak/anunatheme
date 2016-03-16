@@ -25,6 +25,7 @@ $sage_includes = [
   'lib/anunatak.php',
   'lib/acf.php',
   'lib/cpt.php',
+  'lib/loader.php'
 ];
 
 foreach ($sage_includes as $file) {

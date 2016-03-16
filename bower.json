@@ -50,5 +50,8 @@
         "./js/foundation.util.triggers.js"
       ]
     }
+  },
+  "resolutions": {
+    "what-input": "~2.0.1"
   }
 }

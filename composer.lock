@@ -4,9 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e6852df6df6ab74606bf9b419c61a6be",
-    "content-hash": "ba119edaf312f08f2779b1a02a6bcebe",
+    "hash": "9a7796af27d8913686a87878d0012693",
+    "content-hash": "6d109f92f0fa409bef26086c092209b5",
     "packages": [
+        {
+            "name": "danielstjules/stringy",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/danielstjules/Stringy.git",
+                "reference": "fc39b709533d328380c9b436c9801c619669da09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/fc39b709533d328380c9b436c9801c619669da09",
+                "reference": "fc39b709533d328380c9b436c9801c619669da09",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stringy\\": "src/"
+                },
+                "files": [
+                    "src/Create.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel St. Jules",
+                    "email": "danielst.jules@gmail.com",
+                    "homepage": "http://www.danielstjules.com"
+                }
+            ],
+            "description": "A string manipulation library with multibyte support",
+            "homepage": "https://github.com/danielstjules/Stringy",
+            "keywords": [
+                "UTF",
+                "helpers",
+                "manipulation",
+                "methods",
+                "multibyte",
+                "string",
+                "utf-8",
+                "utility",
+                "utils"
+            ],
+            "time": "2015-12-21 00:49:59"
+        },
         {
             "name": "doctrine/inflector",
             "version": "v1.1.0",
@@ -547,7 +603,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/2ac2d531269045ed28034724ceec94a22dddc275",
+                "url": "https://api.github.com/repos/tormjens/wp-blade/zipball/a9740820bdd96123a2ad0cab393cb26a558505b4",
                 "reference": "2ac2d531269045ed28034724ceec94a22dddc275",
                 "shasum": ""
             },

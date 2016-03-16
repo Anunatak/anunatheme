@@ -1,3 +1,5 @@
+@import 'typeplate';
+
 // Glyphicons font path
 $icon-font-path: "../fonts/";
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.5.0/fonts";
@@ -49,7 +51,7 @@ $brand-primary: #27ae60;
 //  33. Tooltip
 //  34. Top Bar
 
-@import "../../bower_components/foundation-sites/scss/util/util";
+@import "../../../bower_components/foundation-sites/scss/util/util";
 
 // 1. Global
 // ---------

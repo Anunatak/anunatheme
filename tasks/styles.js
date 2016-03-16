@@ -4,6 +4,7 @@ var rename     = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if');
 var argv       = require('minimist')(process.argv.slice(2));
+var concat     = require('gulp-concat');
 var livereload = require('gulp-livereload');
 var notify     = require('gulp-notify');
 var plumber    = require('gulp-plumber');

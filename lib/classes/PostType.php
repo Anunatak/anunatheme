@@ -2,7 +2,7 @@
 
 namespace AnunaTheme\Classes;
 
-class PostType extends \CPT {
+class PostType {
 	/**
 	 * Constructor
 	 *
@@ -11,9 +11,10 @@ class PostType extends \CPT {
 	 * @param mixed   $post_type_names The name(s) of the post type, accepts (post type name, slug, plural, singular).
 	 * @param array   $options         User submitted options.
 	 */
-	public function __construct( $post_type_names, $options = array() ) {
-		$this->set_textdomain( ANUNATHEME_TEXTDOMAIN );
-		parent::__construct( $post_type_names, $options );
+	public function add( $post_type_names, $options = array() ) {
+		$cpt = new \CPT($post_type_names, $options );
+		$cpt->set_textdomain( ANUNATHEME_TEXTDOMAIN );
+		return $cpt;
 	}
 
 	/**
@@ -23,6 +24,6 @@ class PostType extends \CPT {
 	 * @param array   $options         User submitted options.
 	 */
 	public static function make( $post_type_names, $options = array() ) {
-		return new static( $post_type_names, $options );
+		return (new static)->add( $post_type_names, $options );
 	}
 }

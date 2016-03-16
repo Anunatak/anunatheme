@@ -1,12 +1,12 @@
 # Require all modules
-jQ = jQuery
+$ = jQuery
 
 # Export the module
 module.exports =
-	$body: jQ('body') # Body element
-	$content: jQ('div[role="document"]') # Site content element
-	$trigger: jQ('[data-navigation-trigger]') # Menu trigger element
-	$inner: jQ('[data-navigation-container]') # Inner navigation element
+	body: 'body' # Body element
+	content: 'div[role="document"]' # Site content element
+	trigger: '[data-navigation-trigger]' # Menu trigger element
+	inner: '[data-navigation-container]' # Inner navigation element
 	bodyActiveClass: 'nav-open' # Class to add when menu is open
 
 	# Toggle navigation
@@ -42,9 +42,15 @@ module.exports =
 			this.$body.removeClass(this.bodyActiveClass)
 		this.$body.trigger('navigation.class.removed');
 
+	cacheElements: ->
+		this.$trigger = $(this.trigger)
+		this.$inner   = $(this.inner)
+		this.$content = $(this.content)
+		this.$body    = $(this.body)
 	# Bind DOM
 	bind: ->
 		self = this
+		self.cacheElements()
 		self.$trigger.on 'click', ->
 			self.toggle()
 
