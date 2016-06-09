@@ -11,13 +11,13 @@ class Loader {
 	public function loadEnqueue()
 	{
 		$enqueue = new Enqueue;
-		@require_once get_template_directory() . '/lib/loaders/enqueue.php';
+		@require_once get_template_directory() . '/loaders/enqueue.php';
 	}
 
 	protected function loadPostType()
 	{
 		$cpt = new PostType;
-		@require_once get_template_directory() . '/lib/loaders/postType.php';
+		@require_once get_template_directory() . '/loaders/postType.php';
 	}
 
 }

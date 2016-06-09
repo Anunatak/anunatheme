@@ -1,6 +1,6 @@
 # Get modules
-jQ        = jQuery
-$         = jQuery
+jQ        = require 'jquery'
+$         = require 'jquery'
 Snake     = require 'jquery-snake'
 Modernizr = require 'browsernizr'
 

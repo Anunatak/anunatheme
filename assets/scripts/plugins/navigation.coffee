@@ -1,5 +1,5 @@
 # Require all modules
-$ = jQuery
+$ = require 'jquery'
 
 # Export the module
 module.exports =

@@ -15,7 +15,9 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var coffeeify = require('coffeeify');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var uglify = require('gulp-uglify');
+var assign = require('lodash.assign');
 
 // Configuration
 var fs = require('fs');
@@ -29,35 +31,52 @@ var enabled = {
   minify: argv.production,
 };
 
-gulp.task('scripts', function () {
+// Set the directories
+var source_dir = config.src_dir + config.scripts.src_dir;
+var dest_dir = config.dest_dir + config.scripts.dest_dir;
 
-    var source_dir = config.src_dir + config.scripts.src_dir;
-    var dest_dir = config.dest_dir + config.scripts.dest_dir;
-    // set up the browserify instance on a task basis
-    var b = browserify({
-      extensions: ['.coffee']
-    });
+// Browserify options
+var options = {
+	extensions: ['.coffee'],
+  	entries: [source_dir + 'app.coffee'],
+  	debug: true
+};
 
-    b.transform(coffeeify, {
-    	sourceMap: enabled.maps,
-		bare: false,
-		header: true
-    });
+// Merge the options with the watchify options
+var opts = assign({}, watchify.args, options);
 
-    b.transform('deamdify');
-    b.transform('debowerify');
+// Create a new bundle
+var b = watchify(browserify(opts));
 
-    b.add(source_dir + 'app.coffee')
+// Add transformations
+b.transform('coffeeify');
+// b.transform('vueify');
+b.transform('hbsify');
+b.transform('browserify-shim', {global: true});
+b.transform('deamdify');
+b.transform('debowerify');
+b.ignore('jquery'); // ignore jquery as we shim it
 
-    return b.bundle()
-      .pipe( source(source_dir + 'app.coffee') )
-      .on( 'error', gutil.log )
-      .pipe( buffer() )
-      .pipe( gulpif( enabled.maps, sourcemaps.init({ loadMaps: true }) ) )
-      .pipe( gulpif( enabled.minify, uglify() ) )
-      .pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
-      .pipe( rename('main.js') )
-      .pipe( gulp.dest(dest_dir) )
-      .pipe( livereload() )
-      .pipe( notify('AnunaTheme: Scripts compiled'+ (argv.production ? ' for production' : '') +'.') );
-});
+// Events listeners
+b.on('update', bundle); // on any dep update, runs the bundler
+b.on('log', gutil.log); // output build logs to terminal
+gulp.task('browserify', bundle);
+
+// Browserify task
+function bundle() {
+	return b.bundle()
+		// log errors if they happen
+	    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+	    .pipe( source(source_dir + 'app.coffee') ) // The main entry file
+		.pipe( buffer() ) // Create a buffer
+		.pipe( gulpif( enabled.maps, sourcemaps.init({ loadMaps: true }) ) ) // If sourcemaps are enabled initalize
+		.pipe( gulpif( enabled.minify, uglify() ) ) // If minify is enabled, uglify
+		.pipe( gulpif( enabled.maps, sourcemaps.write('.') ) ) // If sourcemaps are enabled write
+		.pipe( rename('main.js') ) // Rename the file
+		.pipe( gulp.dest(dest_dir) ) // Output to destination directory
+		.pipe( livereload() ) // Reload the browser
+		.pipe( notify('AnunaTheme: Scripts compiled'+ (argv.production ? ' for production' : '') +'.') ); // Notify
+};
+
+// Bind the task to the scripts task
+gulp.task('scripts', ['browserify']);

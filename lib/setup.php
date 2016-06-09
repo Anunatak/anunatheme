@@ -129,7 +129,7 @@ function typekit() { ?>
 
 <?php }
 if ( ANUNATHEME_TYPEKIT_ID ) {
-	add_action( 'wp_head', __NAMESPACE__. '::typekit', 2 );
+	add_action( 'wp_head', __NAMESPACE__. '\\typekit', 2 );
 }
 
 /**
@@ -147,7 +147,7 @@ function analytics() { ?>
 
 <?php }
 if ( ANUNATHEME_ANALYTICS_ID && !current_user_can( 'manage_options' ) ) {
-	add_action( 'wp_footer', __NAMESPACE__. '::analytics', 20 );
+	add_action( 'wp_footer', __NAMESPACE__. '\\analytics', 20 );
 }
 
 /**
@@ -169,5 +169,5 @@ src="https://www.facebook.com/tr?id=<?php echo ANUNATHEME_FACEBOOK_PIXEL_ID ?>&e
 
 <?php }
 if ( ANUNATHEME_FACEBOOK_PIXEL_ID && !current_user_can( 'manage_options' ) ) {
-	add_action( 'wp_head', __NAMESPACE__. '::pixel', 20 );
+	add_action( 'wp_head', __NAMESPACE__. '\\pixel', 20 );
 }
