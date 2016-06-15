@@ -1,0 +1,71 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/// Set the font size and line height in rem with a px fallback
+/// @author Tor Morten Jensen
+/// @param {Integer} $fontsize
+/// @param {Integer} $lineheight
+@mixin font($fontsize: 16, $lineheight: 24) {
+  font-size: $fontsize + px;
+  font-size: ($fontsize / $base-font-size) + rem;
+  line-height: ($base-line-height / $fontsize);
+}
+
+/// Create a new font face
+/// @author Tor Morten Jensen
+/// @param {String} $style-name
+/// @param {String} $file
+/// @param {String} $family
+/// @param {String} $category
+/// @param {String} $weight
+/// @param {String} $style
+@mixin font-face($style-name, $file, $family, $category:"", $weight: normal, $style: normal) {
+	$filepath: $family + "/" + $file;
+	@font-face {
+		font-family: "#{$style-name}";
+		src: url($filepath + ".eot");
+		src:    url(font($filepath + ".eot?#iefix")) format('embedded-opentype'),
+				url(font($filepath + ".woff")) format('woff'),
+				url(font($filepath + ".ttf"))  format('truetype');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}

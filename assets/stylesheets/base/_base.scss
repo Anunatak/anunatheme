@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Make sure body is 100% height when the navigation is open
+ */
+body {
+	height: auto;
+	&.nav-open {
+		height: 100%;
+	}
+}
+/**
+ * Fixes overlapping admin bar
+ */
+
+@media screen and (max-width: 600px) {
+    #wpadminbar {
+		position: fixed !important;
+	}
+}
+
+/**
+ * Fixes font smoothing
+ */
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Fixes animation error
+ */
+body {
+    -webkit-backface-visibility: hidden;
+}

@@ -6,7 +6,7 @@
 		"dest_dir": "scripts/"
 	},
 	"styles": {
-		"src_dir": "styles/",
+		"src_dir": "stylesheets/",
 		"dest_dir": "styles/",
 		"extension": ".scss"
 	},
