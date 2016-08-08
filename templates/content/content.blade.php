@@ -1,6 +1,6 @@
 {{--
 @type 	Content
-@for 	Index
+@what	Index
 --}}
 <article {!! post_class() !!}>
 	<header>

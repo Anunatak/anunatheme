@@ -1,6 +1,6 @@
 {{--
 @type 	Layout
-@for 	Everything
+@what	Everything
 --}}
 <!doctype html>
 <html {{ language_attributes() }}>

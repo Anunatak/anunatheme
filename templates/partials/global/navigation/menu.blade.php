@@ -1,6 +1,6 @@
 {{--
 @type 	Partial
-@for 	Navigation Menu
+@what	Navigation Menu
 --}}
 <div class="nav-container" data-navigation-container>
 	<nav class="nav-primary">

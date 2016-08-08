@@ -1,6 +1,6 @@
 {{--
 @type 	Content
-@for 	Single Posts
+@what	Single Posts
 --}}
 <article {!! post_class() !!}>
 	<header>

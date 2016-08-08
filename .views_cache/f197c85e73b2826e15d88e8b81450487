@@ -1,0 +1,13 @@
+<?php /*
+@type 	 	Partial
+<?php forArray: ?> 	Site Header
+*/ ?>
+<header class="banner">
+	<div class="container">
+		<a class="brand" href="<?php echo e(esc_url(home_url('/'))); ?>">
+			<?php echo $__env->make('svg.logo', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</a>
+	</div>
+</header>
+
+<?php echo $__env->make('partials.global.navigation', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

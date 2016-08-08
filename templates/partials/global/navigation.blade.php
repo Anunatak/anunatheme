@@ -1,6 +1,6 @@
 {{--
 @type 	Partial
-@for 	Site Navigation
+@what	Site Navigation
 --}}
 @include('partials.global.navigation.trigger')
 @include('partials.global.navigation.menu')

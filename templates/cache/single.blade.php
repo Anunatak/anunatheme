@@ -1,6 +1,6 @@
 {{--
 @type 	Template
-@for 	Single Posts
+@what	Single Posts
 --}}
 @extends('layouts.app')
 

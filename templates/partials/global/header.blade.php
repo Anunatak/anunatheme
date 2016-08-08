@@ -1,6 +1,6 @@
 {{--
 @type 	Partial
-@for 	Site Header
+@what	Site Header
 --}}
 <header class="banner">
 	<div class="container">
