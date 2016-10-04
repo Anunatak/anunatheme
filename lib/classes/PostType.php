@@ -12,7 +12,7 @@ class PostType {
 	 * @param array   $options         User submitted options.
 	 */
 	public function add( $post_type_names, $options = array() ) {
-		$cpt = new \CPT($post_type_names, $options );
+		$cpt = new \CPT( $post_type_names, $options );
 		$cpt->set_textdomain( ANUNATHEME_TEXTDOMAIN );
 		return $cpt;
 	}
@@ -24,6 +24,6 @@ class PostType {
 	 * @param array   $options         User submitted options.
 	 */
 	public static function make( $post_type_names, $options = array() ) {
-		return (new static)->add( $post_type_names, $options );
+		return ( new static )->add( $post_type_names, $options );
 	}
 }

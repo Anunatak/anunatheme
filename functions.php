@@ -13,26 +13,25 @@ require get_template_directory() .'/vendor/autoload.php';
  *
  * @link https://github.com/roots/sage/pull/1042
  */
-$sage_includes = [
-  'lib/config.php',
-  'lib/blade.php',
-  'lib/ajax.php',
-  'lib/assets.php',
-  'lib/extras.php',
-  'lib/setup.php',
-  'lib/titles.php',
-  'lib/customizer.php',
-  'lib/anunatak.php',
-  'lib/acf.php',
-  'lib/cpt.php',
-  'lib/loader.php'
-];
+$sage_includes = array(
+	'lib/acf.php',
+	'lib/ajax.php',
+	'lib/anunatak.php',
+	'lib/assets.php',
+	'lib/blade.php',
+	'lib/config.php',
+	'lib/cpt.php',
+	'lib/extras.php',
+	'lib/setup.php',
+	'lib/titles.php',
+	'lib/loader.php'
+);
 
-foreach ($sage_includes as $file) {
-  if (!$filepath = locate_template($file)) {
-    trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
-  }
+foreach ( $sage_includes as $file ) {
+	if ( !$filepath = locate_template( $file ) ) {
+		trigger_error( sprintf( __( 'Error locating %s for inclusion', 'sage' ), $file ), E_USER_ERROR );
+	}
 
-  require_once $filepath;
+	require_once $filepath;
 }
-unset($file, $filepath);
+unset( $file, $filepath );

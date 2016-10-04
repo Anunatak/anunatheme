@@ -6,26 +6,9 @@
 	{{ __('Sorry, we could not find the page you were requesting.', 'anunatheme') }}
 </div>
 
-{{ __('We know you might be sad right now. Perhaps playing Snake will make you feel better?', 'anunatheme') }}
-
-<div class="snake-container">
-	<div class="snake-color snake-tail"></div>
-	<div class="snake-color snake-head"></div>
-	<div class="snake-color score"></div>
-	<div class="snake-color apple"></div>
-	<div class="snake-intro">
-		<button class="snake-play">
-			{{ __('Play Snake', 'anunatheme') }}
-		</button>
-	</div>
-
-	<div class="snake-crash">
-		<p>{{ __("Argh! You've crashed.") }}</p>
-		<button class="snake-play">
-			{{ __('Play Again', 'anunatheme') }}
-		</button>
-	</div>
-
-	<canvas class="snake-canvas" id="snake" tabindex="1" width="400" height="200"></canvas>
-</div>
-
+<h3>{{ __('The reason might be:', 'anunatheme') }}</h3>
+<ul>
+	<li>{{ __('The page does not exist on this website.', 'anunatheme') }}</li>
+	<li>{{ __('The page is out-dated and has been removed.', 'anunatheme') }}</li>
+	<li>{{ __('The address(url) is not correct.', 'anunatheme') }}</li>
+</ul>
