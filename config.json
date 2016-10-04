@@ -17,5 +17,9 @@
 	"fonts": {
 		"src_dir": "fonts/",
 		"dest_dir": "fonts/"
+	},
+	"favicon": {
+		"src": "favicon.png",
+		"dest_dir": "favicon/"
 	}
 }

@@ -1,7 +1,11 @@
+// Load dependencies
+import 'jquery-dom-router'
 
-var DomRouter = require ('jquery-dom-router')
-var routes    = require('./plugins/routes')
+// Load modules
+import './modules/foundation'
+import routes from './modules/routes'
 
-jQuery(document).ready(function($) {
-	new DomRouter(document, routes);
-});
+// Load router
+jQuery(document).ready( () => {
+	new jQuery.DOMRouter.router(document, routes)
+} )

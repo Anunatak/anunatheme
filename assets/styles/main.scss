@@ -2,10 +2,8 @@
 @import "common/_variables";
 
 // Third party
-@import "components/_bourbon";
 @import "../../bower_components/foundation-sites/scss/foundation";
-@import "../../bower_components/font-awesome/scss/font-awesome";
-@import "../../bower_components/typeplate-starter-kit/scss/typeplate-index";
+@import "../../bower_components/simple-line-icons/scss/simple-line-icons";
 
 // Get all F6 styles
 @import "common/_foundation";
@@ -22,7 +20,6 @@
 @import "components/_forms";
 @import "components/_grid";
 @import "components/_wp-classes";
-@import "components/_snake";
 
 // Layouts
 @import "layouts/_header";

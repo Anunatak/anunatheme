@@ -1,13 +1,19 @@
+/*
+ * Font Mixin
+ */
 $basefontsize: 16;
 $basepadd: 15;
 $baselineheight: 24;
 
 @mixin font($fontsize: 16, $lineheight: 24) {
-  font-size: $fontsize + px;
-  font-size: ($fontsize / $basefontsize) + rem;
-  line-height: ($lineheight / $fontsize);
+	font-size: $fontsize + px;
+	font-size: ($fontsize / $basefontsize) + rem;
+	line-height: ($lineheight / $fontsize);
 }
 
+/*
+ * Font Face Mixin
+ */
 $font-path: '../fonts/';
 
 @mixin font-face($style-name, $file, $family, $category:"", $weight: normal, $style: normal) {
@@ -22,10 +28,12 @@ $font-path: '../fonts/';
 		font-style: $style;
 	}
 }
-
+/*
+ * HTML5 Placeholder Mixin
+ */
 @mixin placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}
+	::-webkit-input-placeholder {@content}
+	:-moz-placeholder           {@content}
+	::-moz-placeholder          {@content}
+	:-ms-input-placeholder      {@content}
 }
