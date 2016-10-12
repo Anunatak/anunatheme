@@ -2484,6 +2484,16 @@ if(!_this.options.clickOpen){isFocus=false;}return false;}else{_this.show();}}).
    */// Window exports
 Foundation.plugin(Tooltip,'Tooltip');}(jQuery);
 
+// Import foundation from bower
+// export as function
+var foundation = function () {
+	// initalize foundation
+	jQuery(document).foundation();
+
+	// notify css that foundation javascript is up and running
+	jQuery('body').addClass('foundation-ready');
+}
+
 var Navigation = function () {
 	function Navigation(body) {
 		classCallCheck(this, Navigation);
@@ -2576,18 +2586,36 @@ var Navigation = function () {
 	return Navigation;
 }();
 
-var routes = {
-	common: function common() {
-		// Bind the navigation
-		new Navigation(jQuery('body'));
-	}
-};
+var common = function () {
+	// Bind the navigation
+	new Navigation(jQuery('body'));
+}
+
+var page = function () {}
+
+var single = function () {}
+
+// Export route functions
+
+
+var routes = Object.freeze({
+	common: common,
+	page: page,
+	single: single
+});
 
 // Load dependencies
 // Load modules
-// Load router
 jQuery(document).ready(function () {
+
+	// Let CSS know that we're ready
+	jQuery('body').addClass('theme-ready');
+
+	// Load router
 	new jQuery.DOMRouter.router(document, routes);
+
+	// Initialize Foundation
+	foundation();
 });
 
 //# sourceMappingURL=app.js.map

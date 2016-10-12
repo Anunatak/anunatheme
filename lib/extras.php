@@ -66,3 +66,12 @@ function disable_emojicons_tinymce( $plugins ) {
 		return array();
 	}
 }
+
+function script_loader_tag( $tag, $handle, $src ) {
+	if ( $handle === 'anunatheme/js' ) {
+		$tag = str_replace( '<script', '<script async', $tag );
+	}
+	return $tag;
+}
+
+add_filter( 'script_loader_tag', __NAMESPACE__ . '\\script_loader_tag', 20, 3 );

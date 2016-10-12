@@ -1,8 +1,4 @@
-import Navigation from '../classes/navigation'
-
-export default {
-	common() {
-		// Bind the navigation
-		new Navigation( jQuery('body') )
-	}
-}
+// Export route functions
+export { default as common } from '../routes/common'
+export { default as page } from '../routes/page'
+export { default as single } from '../routes/single'
