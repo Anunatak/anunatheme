@@ -1,0 +1,12 @@
+.gallery {
+	@include grid-row(null, nest);
+	.gallery-item {
+		margin: 0;
+		@include grid-col(2);
+		.gallery-icon {
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

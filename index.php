@@ -1,6 +1,6 @@
 {{--
 @type 	Template
-@for 	Index
+@what 	Index
 --}}
 @extends('layouts.app')
 

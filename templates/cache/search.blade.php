@@ -1,6 +1,6 @@
 {{--
 @type 	Template
-@for 	Search Results
+@what	Search Results
 --}}
 @extends('layouts.app')
 

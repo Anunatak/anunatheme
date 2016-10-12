@@ -1,12 +1,9 @@
 <?php
 
-namespace AnunaTheme\Blade;
+define( 'BLADE_VIEWS', get_template_directory() . '/templates' );
 
-$blade = new \Tormorten\WPBlade\Blade(
-	get_template_directory() . '/templates', // where all views reside
-	WP_CONTENT_DIR . '/blade_cache' // where the compiled views are stored
-);
+TorMorten\View\Blade::create();
 
-$blade->controller->register([
-	\AnunaTheme\Controllers\HomeController::class
-]);
+add_action( 'after_setup_theme', function() {
+		add_theme_support( 'blade-templates' );
+	} );

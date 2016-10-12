@@ -1,6 +1,6 @@
 {{--
 @type 	Template
-@for 	Pages
+@what 	Pages
 --}}
 @extends('layouts.app')
 

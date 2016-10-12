@@ -6,12 +6,14 @@ $nav-container-spacing: 	80;
 $nav-container-position:	right;
 $nav-container-duration:  	.5s;
 $nav-container-easing:  	ease;
+$nav-body-move:             'yes';
+$nav-body-duration:  	    .6s;
 
 // Nav Container: Position Mixin
 @mixin nav-position {
 	position: fixed;
 	z-index: 600;
-	@include transition( $nav-container-position $nav-container-duration $nav-container-easing );
+	transition: $nav-container-position $nav-container-duration $nav-container-easing;
 	@if($nav-container-position == left) {
 		width: rem-calc($nav-container-width);
 		left: rem-calc(0 - $nav-container-width);
@@ -31,6 +33,32 @@ $nav-container-easing:  	ease;
 		}
 	}
 
+}
+
+// Nav Container: Body Adjument
+@mixin nav-body {
+	@if($nav-body-move == 'yes') {
+		position: relative;
+		z-index: 700;
+		transition: $nav-container-position $nav-body-duration $nav-container-easing;
+		@if($nav-container-position == left) {
+			left: 0;
+			&.nav-open {
+				left: rem-calc(0 - $nav-container-width);
+			}
+		}
+		@else if($nav-container-position == right) {
+			right: 0;
+			&.nav-open {
+				right: rem-calc($nav-container-width);
+			}
+		}
+	}
+}
+
+body {
+	overflow-x: hidden;
+	@include nav-body;
 }
 
 // Nav Container: Styles
@@ -83,7 +111,7 @@ $nav-trigger-line-height: 3;
 	position: absolute;
 	left: 50%;
 	margin-left: rem-calc(-($nav-trigger-line-width/2));
-	@include transition(all .3s ease);
+	transition: all .3s ease;
 	transform-origin: 0 0;
 	&:before {
 		content: ' ';
@@ -95,8 +123,8 @@ $nav-trigger-line-height: 3;
 		display: block;
 		right: 0;
 		top: rem-calc(0 - ($nav-trigger-line-height * 3));
-		@include transition(all .5s ease);
-		@include transition-property(transform top);
+		transition: all .5s ease;
+		transition-property: transform top;
 	}
 	&:after {
 		content: ' ';
@@ -108,21 +136,21 @@ $nav-trigger-line-height: 3;
 		display: block;
 		right: 0;
 		bottom: rem-calc(0 - ($nav-trigger-line-height * 3));
-		@include transition(all .5s ease);
-		@include transition-property(transform top);
+		transition: all .5s ease;
+		transition-property: transform top;
 	}
 }
 
 @mixin nav-lines-open {
 	background-color: transparent;
-	@include transform(rotate(0deg) translateX(0) translateY(10px));
+	transform: rotate(0deg) translateX(0) translateY(10px);
 	&:before {
-		@include transform(rotate3d(0,0,1,45deg) translateZ(0));
+		transform: rotate3d(0,0,1,45deg) translateZ(0);
 		background-color: #fff;
 		// top: 0;
 	}
 	&:after {
-		@include transform(rotate3d(0,0,1,-45deg) translateZ(0) translateX(13px) translateY(-12px));
+		transform: rotate3d(0,0,1,-45deg) translateZ(0) translateX(13px) translateY(-12px);
 		background-color: #fff;
 		// top: 0;
 	}
@@ -130,13 +158,13 @@ $nav-trigger-line-height: 3;
 
 @mixin nav-lines-focus {
 	background-color: transparent;
-	@include transform(rotate(-45deg) translateX(-10px) translateY(25px));
+	transform: rotate(-45deg) translateX(-10px) translateY(25px);
 	&:before {
-		@include transform(rotate3d(0,0,1,45deg) translateZ(0));
+		transform: rotate3d(0,0,1,45deg) translateZ(0);
 		// top: 0;
 	}
 	&:after {
-		@include transform(rotate3d(0,0,1,-45deg) translateZ(0) translateX(13px) translateY(-12px));
+		transform: rotate3d(0,0,1,-45deg) translateZ(0) translateX(13px) translateY(-12px);
 		// top: 0;
 	}
 }
@@ -160,11 +188,6 @@ button.nav-trigger {
 	perspective: 900000px;
 	span.nav-lines {
 		@include nav-lines;
-	}
-	&:focus {
-		span.nav-lines {
-			@include nav-lines-focus;
-		}
 	}
 	.nav-open & {
 		span.nav-lines {

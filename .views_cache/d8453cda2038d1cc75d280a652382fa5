@@ -1,0 +1,10 @@
+<?php /*
+@type 	 	Partial
+<?php forArray: ?> 	Page Headers
+*/ ?>
+<header class="page-header">
+	<h1 class="page-title">
+		<?php echo AnunaTheme\Titles\title(); ?>
+
+	</h1>
+</header>

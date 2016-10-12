@@ -1,0 +1,31 @@
+<?php /*
+@type 	 	Layout
+@what		Everything
+*/ ?>
+<!doctype html>
+<html <?php echo e(language_attributes()); ?>>
+	<?php echo $__env->make('partials.global.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<body <?php echo e(body_class()); ?>>
+		<!--[if IE]>
+			<div class="alert alert-warning">
+				<?php echo e(__('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'anunatheme')); ?>
+
+			</div>
+		<![endif]-->
+		<?php echo do_action('get_header'); ?>
+
+		<?php echo $__env->make('partials.global.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<div class="wrap container" role="document">
+			<div class="content row">
+				<main class="main">
+					<?php echo $__env->yieldContent('content'); ?>
+				</main><!-- /.main -->
+			</div><!-- /.content -->
+		</div><!-- /.wrap -->
+		<?php echo do_action('get_footer'); ?>
+
+		<?php echo $__env->make('partials.global.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo wp_footer(); ?>
+
+	</body>
+</html>

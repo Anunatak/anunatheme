@@ -1,6 +1,17 @@
 // WordPress Generated Classes
 // http://codex.wordpress.org/CSS#WordPress_Generated_Classes
 
+.thumbnail {
+	line-height: 1.9;
+}
+
+// Captions
+.wp-caption {
+	margin-left: 0;
+	margin-right: 0;
+	@extend .thumbnail;
+}
+
 // Media alignment
 .alignnone {
 	margin-left: 0;
@@ -26,17 +37,12 @@
 		margin-left: ($grid-column-gutter / 2);
 	}
 }
-
-// Captions
-.wp-caption {
-	@extend .thumbnail;
-}
 .wp-caption-text {
 	padding: ($grid-column-gutter / 2);
 }
 
 // Text meant only for screen readers
 .screen-reader-text {
-	@extend .sr-only;
-	@extend .sr-only-focusable;
+	// @extend .sr-only;
+	// @extend .sr-only-focusable;
 }

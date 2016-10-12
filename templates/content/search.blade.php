@@ -1,6 +1,6 @@
 {{--
 @type 	Content
-@for 	Search Results
+@what	Search Results
 --}}
 <article {!! post_class() !!}>
 	<header>

@@ -1,0 +1,19 @@
+<?php /*
+@type 	 	Template
+@what 	 	Single Posts
+*/ ?>
+
+
+<?php $__env->startSection('content'); ?>
+
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+		<?php echo $__env->make('partials.page-header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('content.single', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php endwhile; ?><?php else: ?>
+		<?php echo $__env->make('partials.page-header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('content.404', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php endif; wp_reset_postdata(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

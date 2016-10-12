@@ -10,16 +10,16 @@
 /**
  * Replace ACF Function when they do not exist so the theme does not break
  */
-if( !function_exists('get_field') ) {
+if ( !function_exists( 'get_field' ) ) {
 	function get_field( $key, $id = null ) {
 		global $post;
-		if(!$id) {
+		if ( !$id ) {
 			$id = $post->ID;
 		}
 		return get_post_meta( $id, $key = '', true );
 	}
 	function the_field( $key, $id = null ) {
-		echo get_field($key, $id);
+		echo get_field( $key, $id );
 	}
 }
 
@@ -29,12 +29,12 @@ if( !function_exists('get_field') ) {
 if ( function_exists( 'acf_add_options_page' ) ) {
 
 	$page = acf_add_options_page( array(
-		'page_title'  => __( 'Site General Settings', 'roots' ),
-		'menu_title'  => __( 'Site Settings', 'roots' ),
-		'menu_slug'  => 'general-settings',
-		'capability'  => 'edit_posts',
-		'redirect'   => false
-	) );
+			'page_title'  => __( 'Site General Settings', 'roots' ),
+			'menu_title'  => __( 'Site Settings', 'roots' ),
+			'menu_slug'  => 'general-settings',
+			'capability'  => 'edit_posts',
+			'redirect'   => false
+		) );
 
 }
 
@@ -42,27 +42,27 @@ if ( function_exists( 'acf_add_options_page' ) ) {
  * Change json paths
  */
 
-add_filter('acf/settings/save_json', 'anuna_acf_json_save_point');
+add_filter( 'acf/settings/save_json', 'anuna_acf_json_save_point' );
 
 function anuna_acf_json_save_point( $path ) {
 
-    // update path
-    $path = get_template_directory() . '/lib/fields';
+	// update path
+	$path = get_template_directory() . '/lib/fields';
 
-    // return
-    return $path;
+	// return
+	return $path;
 
 }
 
-add_filter('acf/settings/load_json', 'anuna_acf_json_load_point');
+add_filter( 'acf/settings/load_json', 'anuna_acf_json_load_point' );
 
 function anuna_acf_json_load_point( $paths ) {
 
-    // only load the one path
-    $paths = array( get_stylesheet_directory() . '/lib/fields' );
+	// only load the one path
+	$paths = array( get_stylesheet_directory() . '/lib/fields' );
 
-    // return
-    return $paths;
+	// return
+	return $paths;
 
 }
 

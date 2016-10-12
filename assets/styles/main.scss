@@ -1,28 +1,25 @@
 @import "common/_mixins";
 @import "common/_variables";
 
-// Foundation variables goes here, before including foundation framework
-// $body-bg: pink;
-
 // Third party
-@import "components/_bourbon";
-@import "../../bower_components/foundation-sites/scss/foundation.scss";
-@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+@import "../../bower_components/foundation-sites/scss/foundation";
+@import "../../bower_components/simple-line-icons/scss/simple-line-icons";
 
 // Get all F6 styles
-@include foundation-everything;
+@import "common/_foundation";
 
 // Common styles
 @import "common/_global";
+@import "common/_typography";
 @import "common/_fixes";
 
 // Components
 @import "components/_buttons";
 @import "components/_comments";
+@import "components/_gallery";
 @import "components/_forms";
 @import "components/_grid";
 @import "components/_wp-classes";
-@import "components/_snake";
 
 // Layouts
 @import "layouts/_header";

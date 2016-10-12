@@ -1,6 +1,6 @@
 {{--
 @type 	Partial
-@for 	Page Headers
+@what	Page Headers
 --}}
 <header class="page-header">
 	<h1 class="page-title">

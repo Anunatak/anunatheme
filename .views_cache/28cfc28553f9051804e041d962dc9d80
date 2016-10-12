@@ -1,0 +1,10 @@
+<?php /*
+@type 	 	Partial
+<?php forArray: ?> 	Site Footer
+*/ ?>
+<footer class="content-info" role="contentinfo">
+	<div class="container">
+		<?php echo dynamic_sidebar('sidebar-footer'); ?>
+
+	</div>
+</footer>
