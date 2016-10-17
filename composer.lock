@@ -116,8 +116,50 @@
                 "shasum": ""
             },
             "require": {
+<<<<<<< HEAD
+                "illuminate/events": "~5",
+                "illuminate/view": "~5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Philo\\Blade\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Philo Hermans",
+                    "email": "me@philohermans.com"
+                }
+            ],
+            "description": "Use the simple and yet powerful Laravel Blade templating engine as a standalone component.",
+            "keywords": [
+                "blade",
+                "laravel"
+            ],
+            "time": "2015-12-04 09:42:42"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "623bda0abd9aa29e529c8e9c08b3b84171914723"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/623bda0abd9aa29e529c8e9c08b3b84171914723",
+                "reference": "623bda0abd9aa29e529c8e9c08b3b84171914723",
+                "shasum": ""
+=======
                 "php": ">=5.5.9",
                 "symfony/polyfill-mbstring": "~1.1"
+>>>>>>> 526861ecfcfd3acb4f26275b1a02ea736d658825
             },
             "require-dev": {
                 "symfony/expression-language": "~2.8|~3.0"
@@ -152,6 +194,22 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2016-01-27 05:14:46"
+        },
+        {
+            "name": "symfony/http-foundation",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-foundation.git",
+                "reference": "9344a87ceedfc50354a39653e54257ee9aa6a77d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/9344a87ceedfc50354a39653e54257ee9aa6a77d",
+                "reference": "9344a87ceedfc50354a39653e54257ee9aa6a77d",
+=======
             "time": "2016-07-17 14:02:08"
         },
         {
@@ -166,6 +224,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/dff51f72b0706335131b00a7f49606168c582594",
                 "reference": "dff51f72b0706335131b00a7f49606168c582594",
+>>>>>>> 526861ecfcfd3acb4f26275b1a02ea736d658825
                 "shasum": ""
             },
             "require": {
@@ -204,6 +263,9 @@
             ],
             "description": "Symfony polyfill for the Mbstring extension",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2016-02-02 13:44:19"
+=======
             "keywords": [
                 "compatibility",
                 "mbstring",
@@ -212,6 +274,7 @@
                 "shim"
             ],
             "time": "2016-05-18 14:26:46"
+>>>>>>> 526861ecfcfd3acb4f26275b1a02ea736d658825
         },
         {
             "name": "tormjens/wp-blade",
