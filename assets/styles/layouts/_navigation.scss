@@ -181,17 +181,10 @@ button.nav-trigger {
 		right: rem-calc(24);
 		top: rem-calc(24);
 	}
-	height: rem-calc($nav-trigger-height);
-	width: rem-calc($nav-trigger-width);
-	outline: none;
-	-webkit-perspective: 900000px;
-	perspective: 900000px;
-	span.nav-lines {
-		@include nav-lines;
-	}
 	.nav-open & {
-		span.nav-lines {
-			@include nav-lines-open;
+		.hamburger-inner,.hamburger-inner:before,.hamburger-inner:after {
+			background-color: #fff;
 		}
 	}
+	outline: none;
 }

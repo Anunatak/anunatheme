@@ -24,7 +24,8 @@ $sage_includes = array(
 	'lib/extras.php',
 	'lib/setup.php',
 	'lib/titles.php',
-	'lib/loader.php'
+	'lib/loader.php',
+	'lib/silk.php'
 );
 
 foreach ( $sage_includes as $file ) {

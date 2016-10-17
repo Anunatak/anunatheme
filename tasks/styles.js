@@ -40,7 +40,7 @@ gulp.task('styles', function () {
 			cascade: false
 		}) )
 		.pipe( rename('main.css') )
-		.pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
+		.pipe( gulpif( enabled.maps, sourcemaps.write() ) )
 		.pipe( gulpif( enabled.minify, cssnano() ) )
 		.pipe( plumber.stop() )
 		.pipe( gulp.dest(dest_dir) )

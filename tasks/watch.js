@@ -19,7 +19,11 @@ gulp.task('watch', function() {
 	browserSync.init({
 		proxy: url,
 		open: false,
-		port: 1337
+		port: 1337,
+		watchOptions: {
+			ignoreInitial: true,
+			ignored: '*.map'
+		},
 	});
 
 	// Watch for changes on any PHP-file

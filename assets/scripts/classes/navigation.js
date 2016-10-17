@@ -57,6 +57,7 @@ export default class Navigation  {
 
 	open() {
 		this._addBodyClass()
+		this.$trigger.addClass('is-active')
 		setTimeout(() => {
 			this.$body.trigger('navigation.opened');
 		}, this.animationDelay);
@@ -65,6 +66,7 @@ export default class Navigation  {
 
 	close() {
 		this._removeBodyClass()
+		this.$trigger.removeClass('is-active')
 		setTimeout(() => {
 			this.$body.trigger('navigation.closed');
 		}, this.animationDelay);

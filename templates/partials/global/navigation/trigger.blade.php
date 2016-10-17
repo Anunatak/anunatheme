@@ -2,6 +2,9 @@
 @type 	Partial
 @what	Navigation Trigger
 --}}
-<button class="nav-trigger" data-navigation-trigger>
-	<span class="nav-lines">{{ __('Open Menu', 'anunatheme') }}</span>
+
+<button class="hamburger hamburger--elastic nav-trigger" type="button" aria-label="{{ __('Open Menu', 'anunatheme') }}" aria-controls="navigation" data-navigation-trigger>
+	<span class="hamburger-box">
+		<span class="hamburger-inner"></span>
+	</span>
 </button>

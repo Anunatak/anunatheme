@@ -52,7 +52,7 @@ gulp.task('rollup', function() {
 	.pipe( buffer() )
 	.pipe( gulpif( enabled.maps, sourcemaps.init({loadMaps: true}) ) )
 	.pipe( gulpif( enabled.minify, uglify() ) )
-	.pipe( gulpif( enabled.maps, sourcemaps.write('.') ) )
+	.pipe( gulpif( enabled.maps, sourcemaps.write() ) )
 	.pipe( gulp.dest( dest_dir ) )
 	.pipe( plumber.stop() )
 	.pipe( notify('AnunaTheme: Scripts bundled'+ (argv.production ? ' for production' : '') +'.') );
