@@ -2,7 +2,7 @@
   "devDependencies": {
     "autoprefixer": "^6.2.3",
     "babel-preset-es2015": "^6.16.0",
-    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-es2015-rollup": "latest",
     "babelrc-rollup": "^3.0.0",
     "bower": "^1.7.9",
     "browser-sync": "^2.17.0",

@@ -7,12 +7,15 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "foundation-sites": "~6.2.3",
+    "foundation-sites": "6.3.0",
     "jquery-dom-router": "master",
     "bourbon": "4.2.6",
     "components-modernizr": "2.8.3",
     "font-awesome": "~4.5.0",
     "simple-line-icons": "~2.4.1",
     "css-hamburgers": "~0.5.0"
+  },
+  "resolutions": {
+    "what-input": "~4.0.3"
   }
 }

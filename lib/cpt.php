@@ -4,7 +4,6 @@ namespace AnunaTheme\CPT;
 
 use AnunaTheme\Classes\PostType;
 
-/**
- * Register a post type called "person"
- */
-$people = PostType::make( 'person' );
+// Create post types here.
+// Usage/params see: https://github.com/jjgrainger/wp-custom-post-type-class
+// $people = PostType::make( 'person' );

@@ -2,7 +2,7 @@
 Template Name: Custom Page Template
 
 @type 	Template
-@for 	Page Template
+@what 	Page Template
 --}}
 @extends('layouts.app')
 

@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "tormjens/wp-blade": "dev-master",
+        "tormjens/wp-blade": "2.0.1",
         "jjgrainger/wp-custom-post-type-class": "dev-master",
         "symfony/http-foundation": "^3.0",
         "danielstjules/stringy": "^2.2"

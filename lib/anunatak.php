@@ -30,6 +30,6 @@ else {
 
 	}
 
-	add_filter( 'anuna_img_args_parsed', __NAMESPACE__ . '::anuna_img_settings' );
+	add_filter( 'anuna_img_args_parsed', __NAMESPACE__ . '\\anuna_img_settings' );
 
 }

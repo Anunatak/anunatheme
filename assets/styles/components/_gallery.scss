@@ -1,5 +1,5 @@
 .gallery {
-	@include grid-row(null, nest);
+	@include grid-row($behavior: nest);
 	.gallery-item {
 		margin: 0;
 		@include grid-col(2);
